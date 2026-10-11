@@ -5,6 +5,7 @@ import {
   applyDynamicRules,
   applyEnabledRulesets
 } from "../platform/network-rules";
+import { ensureAlarm } from "./tab-tracker";
 
 export interface ApplySummary {
   rulesAdded: number;
@@ -48,6 +49,11 @@ export async function applySettings(
   const rs = await applyEnabledRulesets(wantedRulesets);
   summary.rulesetsEnabled = rs.enabled;
   summary.rulesetsDisabled = rs.disabled;
+
+  if (settings.tabDiscard.enabled && !(caps.tabDiscard && caps.alarms)) {
+    summary.unavailable.push("tabDiscard");
+  }
+  await ensureAlarm(settings);
 
   return summary;
 }

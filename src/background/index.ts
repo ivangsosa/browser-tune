@@ -13,12 +13,18 @@ import {
   saveSettings
 } from "../platform/storage";
 import { applySettings } from "./apply-profile";
+import { initTabTracking, seedMissing } from "./tab-tracker";
+
+// Registrar listeners en el top-level: el SW/event page puede morir y
+// volver, y los listeners deben existir desde el primer evento.
+initTabTracking();
 
 // onInstalled/onStartup: migrar/persistir settings y re-aplicar el estado
 // deseado. Todo se reconstruye desde storage — nada depende de memoria del SW.
 async function restoreAndApply(): Promise<void> {
   const settings = await loadSettings();
   await applySettings(settings);
+  await seedMissing();
 }
 
 chrome.runtime.onInstalled.addListener((details) => {
