@@ -24,6 +24,20 @@ const importBtn = $<HTMLButtonElement>("import");
 const importJsonEl = $<HTMLTextAreaElement>("import-json");
 const saveBtn = $<HTMLButtonElement>("save");
 const statusEl = $<HTMLParagraphElement>("status");
+const tipsEl = $<HTMLUListElement>("browser-tips");
+
+// Ajustes nativos que la extensión no puede tocar — solo se sugieren.
+const BROWSER_TIPS: Record<"firefox" | "chromium", string[]> = {
+  chromium: [
+    "Settings → Performance → turn on Memory Saver (chrome://settings/performance, brave://settings/performance).",
+    "Settings → Performance → disable page preloading if you want lower memory usage.",
+    "Brave only: Shields already blocks ads/trackers — overlapping blocking lists add little benefit."
+  ],
+  firefox: [
+    "about:config → browser.tabs.unloadOnLowMemory should stay true (default — automatic tab unloading on low memory).",
+    "about:preferences → Privacy & Security → keep Enhanced Tracking Protection on — it already covers most tracker blocking."
+  ]
+};
 
 function send<R>(msg: BgRequest): Promise<R> {
   return chrome.runtime.sendMessage(msg) as Promise<R>;
@@ -65,6 +79,15 @@ function render(s: StateResponse): void {
   if (!s.capabilities.tabDiscard) missing.push("tab discard unavailable");
   statusEl.textContent =
     missing.length > 0 ? `Unavailable: ${missing.join(", ")}` : "";
+
+  const tips = BROWSER_TIPS[s.capabilities.isFirefox ? "firefox" : "chromium"];
+  tipsEl.replaceChildren(
+    ...tips.map((tip) => {
+      const li = document.createElement("li");
+      li.textContent = tip;
+      return li;
+    })
+  );
 }
 
 function collectSettings(base: ExtensionSettings): ExtensionSettings {
