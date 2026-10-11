@@ -7,7 +7,32 @@
   </head>
   <body>
     <h1>browser-tune</h1>
-    <p id="status">Loading…</p>
+
+    <label class="row" for="profile">
+      Profile
+      <select id="profile">
+        <option value="balanced">Balanced</option>
+        <option value="low-resource">Low Resource</option>
+        <option value="privacy">Privacy</option>
+        <option value="custom">Custom</option>
+      </select>
+    </label>
+
+    <label class="row">
+      <input type="checkbox" id="blocking" />
+      Domain blocking
+    </label>
+
+    <label class="row">
+      <input type="checkbox" id="discard" />
+      Discard inactive tabs
+    </label>
+
+    <p id="status" class="status"></p>
+    <p id="warnings" class="warnings"></p>
+
+    <button id="open-options" type="button">Options</button>
+
     <script src="popup.js"></script>
   </body>
 </html>

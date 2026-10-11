@@ -1,17 +1,40 @@
 body {
-  min-width: 220px;
+  min-width: 240px;
   margin: 0;
   padding: 12px;
   font-family: system-ui, sans-serif;
+  font-size: 13px;
 }
 
 h1 {
   font-size: 15px;
-  margin: 0 0 8px;
+  margin: 0 0 10px;
 }
 
-#status {
-  font-size: 13px;
-  color: #555;
-  margin: 0;
+.row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.row select {
+  margin-left: auto;
+}
+
+.status {
+  color: #3a7d44;
+  margin: 10px 0 4px;
+  min-height: 1em;
+}
+
+.warnings {
+  color: #9a6700;
+  margin: 0 0 8px;
+  min-height: 1em;
+}
+
+button {
+  padding: 4px 10px;
+  cursor: pointer;
 }

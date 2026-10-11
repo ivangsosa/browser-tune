@@ -7,7 +7,51 @@
   </head>
   <body>
     <h1>browser-tune — Options</h1>
-    <p>Configuration page. Profiles and rules management land here.</p>
+
+    <section>
+      <h2>Profile</h2>
+      <select id="profile">
+        <option value="balanced">Balanced</option>
+        <option value="low-resource">Low Resource</option>
+        <option value="privacy">Privacy</option>
+        <option value="custom">Custom</option>
+      </select>
+      <p class="hint">Applying a profile replaces the settings below. Any manual change switches to Custom.</p>
+    </section>
+
+    <section>
+      <h2>Domain blocking</h2>
+      <label><input type="checkbox" id="blocking-enabled" /> Enabled</label>
+      <fieldset id="rulesets"></fieldset>
+      <label for="blocked-domains">Blocked domains (one per line, max 5000)</label>
+      <textarea id="blocked-domains" rows="6"></textarea>
+      <label for="excluded-domains">Excluded from blocking (one per line)</label>
+      <textarea id="excluded-domains" rows="4"></textarea>
+    </section>
+
+    <section>
+      <h2>Tab discarding</h2>
+      <label><input type="checkbox" id="discard-enabled" /> Enabled</label>
+      <label for="inactive-minutes">
+        Discard after <input type="number" id="inactive-minutes" min="5" max="1440" step="5" /> minutes inactive
+      </label>
+      <label for="discard-excluded">Never discard tabs from (one per line)</label>
+      <textarea id="discard-excluded" rows="4"></textarea>
+      <p class="hint">A discarded tab reloads when you select it and may lose unsaved form state.</p>
+    </section>
+
+    <section>
+      <h2>Backup</h2>
+      <button id="export" type="button">Export settings</button>
+      <textarea id="export-json" rows="6" readonly></textarea>
+      <label for="import-json">Import settings (JSON)</label>
+      <textarea id="import-json" rows="6"></textarea>
+      <button id="import" type="button">Import and apply</button>
+    </section>
+
+    <p id="status" class="status"></p>
+    <button id="save" type="button">Save and apply</button>
+
     <script src="options.js"></script>
   </body>
 </html>
