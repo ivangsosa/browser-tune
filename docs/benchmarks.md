@@ -32,6 +32,19 @@ memoria de páginas y métricas del sistema.
   - Firefox: `about:processes`.
 - Versiones y condiciones completas de la corrida.
 
+## Benchmark automatizado (solicitudes y tiempo de carga)
+
+`npm run bench` corre un escenario reproducible: una página servida en
+`127.0.0.1` que pide 40 recursos a un tercero (`localhost`) y 8 propios.
+Mide cuántas solicitudes llegan realmente a la red y el tiempo de carga de
+la página, sin bloqueo y bloqueando `localhost`. Escribe el resultado en
+`benchmarks/results/<fecha>.json` (ignorado por git).
+
+Mide solicitudes y tiempo de carga, **no memoria**: para RAM seguir el
+procedimiento manual de arriba con el administrador de tareas del
+navegador. Los números varían entre corridas y máquinas; compararlos solo
+dentro de la misma corrida.
+
 ## Regla
 
 No publicar porcentajes universales de mejora. Reportar siempre la

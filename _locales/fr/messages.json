@@ -305,5 +305,74 @@
         "content": "$1"
       }
     }
+  },
+  "activitySection": {
+    "message": "Activité"
+  },
+  "clearActivity": {
+    "message": "Effacer l'historique"
+  },
+  "emptyActivity": {
+    "message": "Aucune activité pour l'instant."
+  },
+  "pausedSites": {
+    "message": "Sites suspendus"
+  },
+  "logApply": {
+    "message": "Paramètres appliqués (+$added$ −$removed$ règles)",
+    "placeholders": {
+      "added": {
+        "content": "$1"
+      },
+      "removed": {
+        "content": "$2"
+      }
+    }
+  },
+  "logProfile": {
+    "message": "Profil appliqué : $name$",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "logImport": {
+    "message": "Paramètres importés"
+  },
+  "logPause": {
+    "message": "Blocage suspendu sur $domain$ jusqu'à $time$",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      },
+      "time": {
+        "content": "$2"
+      }
+    }
+  },
+  "logResume": {
+    "message": "Blocage repris sur $domain$",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "logDiscard": {
+    "message": "$count$ onglets déchargés",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "logError": {
+    "message": "Échec de l'application : $detail$",
+    "placeholders": {
+      "detail": {
+        "content": "$1"
+      }
+    }
   }
 }

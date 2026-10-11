@@ -46,5 +46,11 @@
   "options_ui": {
     "page": "options.html",
     "open_in_tab": true
+  },
+  "commands": {
+    "discard-now": {
+      "suggested_key": { "default": "Alt+Shift+D" },
+      "description": "__MSG_discardNow__"
+    }
   }
 }

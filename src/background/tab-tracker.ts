@@ -1,7 +1,7 @@
 import { isDiscardable } from "../core/tab-discard";
 import type { ExtensionSettings } from "../core/types";
 import { getCapabilities } from "../platform/capabilities";
-import { loadSettings } from "../platform/storage";
+import { loadSettings, logActivity } from "../platform/storage";
 
 /**
  * Actividad por pestaña en storage.session: sobrevive a suspensiones del
@@ -72,6 +72,14 @@ export async function countDiscarded(): Promise<number> {
   return (await chrome.tabs.query({ discarded: true })).length;
 }
 
+/** Badge del ícono = pestañas descartadas (vacío en 0). */
+export async function updateBadge(): Promise<void> {
+  if (typeof chrome.action?.setBadgeText !== "function") return;
+  const n = await countDiscarded();
+  await chrome.action.setBadgeText({ text: n > 0 ? String(n) : "" });
+  await chrome.action.setBadgeBackgroundColor({ color: "#4a6ea9" });
+}
+
 async function discardEligible(
   settings: ExtensionSettings,
   thresholdMs: number
@@ -139,7 +147,14 @@ export function initTabTracking(): void {
   if (caps.alarms) {
     chrome.alarms.onAlarm.addListener((alarm) => {
       if (alarm.name === ALARM_NAME) {
-        void loadSettings().then(sweep);
+        void loadSettings()
+          .then(sweep)
+          .then(async (n) => {
+            if (n > 0) {
+              await logActivity({ kind: "discard", count: n });
+              await updateBadge();
+            }
+          });
       }
     });
   }

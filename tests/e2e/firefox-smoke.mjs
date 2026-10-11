@@ -209,6 +209,8 @@ try {
       assert.equal(t.active || t.pinned, false);
     }
     assert.equal((await send({ type: "getState" })).discardedTabs, res.discarded);
+    const badge = await run("return await chrome.action.getBadgeText({});");
+    assert.equal(badge, String(res.discarded));
   });
   await check("importar JSON inválido se rechaza", async () => {
     await options();

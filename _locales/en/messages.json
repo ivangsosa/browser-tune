@@ -305,5 +305,74 @@
         "content": "$1"
       }
     }
+  },
+  "activitySection": {
+    "message": "Activity"
+  },
+  "clearActivity": {
+    "message": "Clear history"
+  },
+  "emptyActivity": {
+    "message": "No activity yet."
+  },
+  "pausedSites": {
+    "message": "Paused sites"
+  },
+  "logApply": {
+    "message": "Settings applied (+$added$ −$removed$ rules)",
+    "placeholders": {
+      "added": {
+        "content": "$1"
+      },
+      "removed": {
+        "content": "$2"
+      }
+    }
+  },
+  "logProfile": {
+    "message": "Profile applied: $name$",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "logImport": {
+    "message": "Settings imported"
+  },
+  "logPause": {
+    "message": "Blocking paused on $domain$ until $time$",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      },
+      "time": {
+        "content": "$2"
+      }
+    }
+  },
+  "logResume": {
+    "message": "Blocking resumed on $domain$",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "logDiscard": {
+    "message": "$count$ tabs discarded",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "logError": {
+    "message": "Apply failed: $detail$",
+    "placeholders": {
+      "detail": {
+        "content": "$1"
+      }
+    }
   }
 }

@@ -45,10 +45,11 @@
         </select>
         <button id="pause" type="button" data-i18n="pauseBlocking">Pause blocking here</button>
       </div>
-      <div id="resume-controls" class="row" hidden>
-        <span id="paused-info"></span>
-        <button id="resume" type="button" data-i18n="resumeBlocking">Resume</button>
-      </div>
+    </section>
+
+    <section id="pauses-box" hidden aria-labelledby="pauses-title">
+      <h2 id="pauses-title" data-i18n="pausedSites">Paused sites</h2>
+      <ul id="pauses-list" class="pauses"></ul>
     </section>
 
     <section class="discard-box" aria-labelledby="tabs-title">

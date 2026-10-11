@@ -1,3 +1,4 @@
+import type { ActivityEntry } from "./activity";
 import type { ExtensionSettings, PauseEntry, ProfileId } from "./types";
 
 /** Mensajes UI -> background. La UI nunca toca APIs del navegador directamente. */
@@ -10,7 +11,8 @@ export type BgRequest =
   | { type: "excludeSite"; scope: "blocking" | "discard"; domain: string }
   | { type: "pauseSite"; domain: string; minutes: number }
   | { type: "resumeSite"; domain: string }
-  | { type: "discardNow" };
+  | { type: "discardNow" }
+  | { type: "clearActivity" };
 
 export interface CapabilitiesInfo {
   dnr: boolean;
@@ -40,6 +42,8 @@ export interface StateResponse {
   discardedTabs: number;
   /** Último error al aplicar la configuración (null si el último intento fue OK). */
   lastError: string | null;
+  /** Historial de acciones, más reciente primero. */
+  activityLog: ActivityEntry[];
 }
 
 export interface ApplyResponse {

@@ -21,11 +21,10 @@ const siteHostEl = $<HTMLElement>("site-host");
 const excludeBlockingBtn = $<HTMLButtonElement>("exclude-blocking");
 const excludeDiscardBtn = $<HTMLButtonElement>("exclude-discard");
 const pauseControlsEl = $<HTMLElement>("pause-controls");
-const resumeControlsEl = $<HTMLElement>("resume-controls");
+const pausesBoxEl = $<HTMLElement>("pauses-box");
+const pausesListEl = $<HTMLUListElement>("pauses-list");
 const pauseMinutesEl = $<HTMLSelectElement>("pause-minutes");
 const pauseBtn = $<HTMLButtonElement>("pause");
-const resumeBtn = $<HTMLButtonElement>("resume");
-const pausedInfoEl = $<HTMLElement>("paused-info");
 const discardedCountEl = $<HTMLParagraphElement>("discarded-count");
 const discardNowBtn = $<HTMLButtonElement>("discard-now");
 const errorBoxEl = $<HTMLElement>("error-box");
@@ -59,17 +58,10 @@ function renderSite(s: StateResponse): void {
   siteEl.hidden = host === null;
   if (host === null) return;
   siteHostEl.textContent = host;
-  const pause = s.pauses.find((p) => host === p.domain || host?.endsWith(`.${p.domain}`));
-  pauseControlsEl.hidden = pause !== undefined;
-  resumeControlsEl.hidden = pause === undefined;
-  if (pause) {
-    const until = new Date(pause.until).toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit"
-    });
-    pausedInfoEl.textContent = t("pausedUntil", until);
-    resumeBtn.dataset.domain = pause.domain;
-  }
+  const pausedHere = s.pauses.some(
+    (p) => host === p.domain || host?.endsWith(`.${p.domain}`)
+  );
+  pauseControlsEl.hidden = pausedHere;
   pauseBtn.disabled = !s.capabilities.dnr;
   excludeBlockingBtn.disabled = !s.capabilities.dnr;
   excludeDiscardBtn.disabled = !s.capabilities.tabDiscard;
@@ -91,6 +83,31 @@ function render(s: StateResponse): void {
 
   showError(s.lastError);
   renderSite(s);
+  renderPauses(s);
+}
+
+function renderPauses(s: StateResponse): void {
+  pausesBoxEl.hidden = s.pauses.length === 0;
+  pausesListEl.replaceChildren();
+  for (const pause of s.pauses) {
+    const until = new Date(pause.until).toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit"
+    });
+    const li = document.createElement("li");
+    const span = document.createElement("span");
+    span.className = "host";
+    span.textContent = `${pause.domain} — ${t("pausedUntil", until)} `;
+    const resume = document.createElement("button");
+    resume.type = "button";
+    resume.className = "tip-action";
+    resume.textContent = t("resumeBlocking");
+    resume.addEventListener("click", () => {
+      void run({ type: "resumeSite", domain: pause.domain });
+    });
+    li.append(span, resume);
+    pausesListEl.append(li);
+  }
 }
 
 function renderApplyResult(res: ApplyResponse): void {
@@ -162,10 +179,6 @@ pauseBtn.addEventListener("click", () => {
   }
 });
 
-resumeBtn.addEventListener("click", () => {
-  const domain = resumeBtn.dataset.domain;
-  if (domain) void run({ type: "resumeSite", domain });
-});
 
 discardNowBtn.addEventListener("click", async () => {
   const res = await send<ApplyResponse>({ type: "discardNow" });

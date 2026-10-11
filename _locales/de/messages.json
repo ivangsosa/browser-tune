@@ -305,5 +305,74 @@
         "content": "$1"
       }
     }
+  },
+  "activitySection": {
+    "message": "Aktivität"
+  },
+  "clearActivity": {
+    "message": "Verlauf löschen"
+  },
+  "emptyActivity": {
+    "message": "Noch keine Aktivität."
+  },
+  "pausedSites": {
+    "message": "Pausierte Seiten"
+  },
+  "logApply": {
+    "message": "Einstellungen angewendet (+$added$ −$removed$ Regeln)",
+    "placeholders": {
+      "added": {
+        "content": "$1"
+      },
+      "removed": {
+        "content": "$2"
+      }
+    }
+  },
+  "logProfile": {
+    "message": "Profil angewendet: $name$",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "logImport": {
+    "message": "Einstellungen importiert"
+  },
+  "logPause": {
+    "message": "Blockierung auf $domain$ pausiert bis $time$",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      },
+      "time": {
+        "content": "$2"
+      }
+    }
+  },
+  "logResume": {
+    "message": "Blockierung auf $domain$ fortgesetzt",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "logDiscard": {
+    "message": "$count$ Tabs verworfen",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "logError": {
+    "message": "Anwendung fehlgeschlagen: $detail$",
+    "placeholders": {
+      "detail": {
+        "content": "$1"
+      }
+    }
   }
 }

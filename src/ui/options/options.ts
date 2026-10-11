@@ -45,6 +45,67 @@ const errorBoxEl = $<HTMLElement>("error-box");
 const errorTextEl = $<HTMLElement>("error-text");
 const retryBtn = $<HTMLButtonElement>("retry");
 const tipsEl = $<HTMLUListElement>("browser-tips");
+const activityListEl = $<HTMLUListElement>("activity-list");
+const clearActivityBtn = $<HTMLButtonElement>("clear-activity");
+
+const PROFILE_KEYS: Record<ProfileId, string> = {
+  balanced: "profileBalanced",
+  "low-resource": "profileLowResource",
+  privacy: "profilePrivacy",
+  custom: "profileCustom"
+};
+
+const fmtTime = (ts: number): string =>
+  new Date(ts).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+
+const fmtStamp = (ts: number): string =>
+  new Date(ts).toLocaleString([], {
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+
+function formatActivity(e: StateResponse["activityLog"][number]): string {
+  switch (e.kind) {
+    case "apply":
+      return t("logApply", [String(e.added ?? 0), String(e.removed ?? 0)]);
+    case "profile":
+      return t(
+        "logProfile",
+        t(PROFILE_KEYS[(e.profile as ProfileId) ?? "custom"])
+      );
+    case "import":
+      return t("logImport");
+    case "pause":
+      return t("logPause", [e.domain ?? "?", fmtTime(e.until ?? 0)]);
+    case "resume":
+      return t("logResume", e.domain ?? "?");
+    case "discard":
+      return t("logDiscard", String(e.count ?? 0));
+    case "error":
+      return t("logError", e.error ?? "unknown");
+  }
+}
+
+function renderActivity(entries: StateResponse["activityLog"]): void {
+  activityListEl.replaceChildren();
+  if (entries.length === 0) {
+    const li = document.createElement("li");
+    li.className = "hint";
+    li.textContent = t("emptyActivity");
+    activityListEl.append(li);
+    return;
+  }
+  for (const e of entries) {
+    const li = document.createElement("li");
+    const stamp = document.createElement("span");
+    stamp.className = "stamp";
+    stamp.textContent = fmtStamp(e.ts);
+    li.append(stamp, ` ${formatActivity(e)}`);
+    activityListEl.append(li);
+  }
+}
 
 // Ajustes nativos que la extensión no puede tocar — solo se sugieren.
 // internalUrl: se intenta abrir via tabs.create (si el navegador lo bloquea,
@@ -255,6 +316,7 @@ function render(s: StateResponse): void {
       (tip) => brave || !tip.braveOnly
     )
   );
+  renderActivity(s.activityLog);
 }
 
 function collectSettings(base: ExtensionSettings): ExtensionSettings {
@@ -327,6 +389,10 @@ saveBtn.addEventListener("click", () => {
 
 revertBtn.addEventListener("click", () => {
   void refresh();
+});
+
+clearActivityBtn.addEventListener("click", () => {
+  void apply({ type: "clearActivity" });
 });
 
 retryBtn.addEventListener("click", () => {

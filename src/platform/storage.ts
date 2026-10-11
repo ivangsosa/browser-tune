@@ -4,6 +4,7 @@ import {
   SETTINGS_KEY
 } from "../core/settings";
 import type { ExtensionSettings, PauseEntry } from "../core/types";
+import { appendActivity, type ActivityEntry } from "../core/activity";
 
 /**
  * Lee la configuración persistida. Devuelve defaults si no existe o si los
@@ -28,6 +29,7 @@ export async function saveSettings(
 
 const PAUSES_KEY = "pauses";
 const LAST_ERROR_KEY = "lastError";
+const ACTIVITY_KEY = "activityLog";
 export const LANGUAGE_KEY = "uiLanguage";
 
 export async function loadPauses(): Promise<PauseEntry[]> {
@@ -59,6 +61,29 @@ export async function setLastError(message: string | null): Promise<void> {
   if (!chrome.storage.session) return;
   if (message === null) await chrome.storage.session.remove(LAST_ERROR_KEY);
   else await chrome.storage.session.set({ [LAST_ERROR_KEY]: message });
+}
+
+export async function loadActivity(): Promise<ActivityEntry[]> {
+  const raw = await chrome.storage.local.get(ACTIVITY_KEY);
+  const v: unknown = raw[ACTIVITY_KEY];
+  return Array.isArray(v) ? (v as ActivityEntry[]) : [];
+}
+
+export async function logActivity(
+  entry: Omit<ActivityEntry, "ts">
+): Promise<void> {
+  try {
+    const log = await loadActivity();
+    await chrome.storage.local.set({
+      [ACTIVITY_KEY]: appendActivity(log, entry)
+    });
+  } catch {
+    // El historial es informativo: nunca debe romper una operación.
+  }
+}
+
+export async function clearActivity(): Promise<void> {
+  await chrome.storage.local.remove(ACTIVITY_KEY);
 }
 
 export function exportSettings(settings: ExtensionSettings): string {

@@ -183,6 +183,20 @@ test("pausa por sitio permite lo bloqueado y se revierte al reanudar", async () 
   await page.close();
 });
 
+test("registra actividad en el historial y permite borrarla", async () => {
+  const page = await extPage("options");
+  await send(page, { type: "pauseSite", domain: "example.com", minutes: 15 });
+  await send(page, { type: "resumeSite", domain: "example.com" });
+  let state = await send(page, { type: "getState" });
+  expect(state.activityLog.map((e: { kind: string }) => e.kind)).toEqual(
+    expect.arrayContaining(["pause", "resume"])
+  );
+  await send(page, { type: "clearActivity" });
+  state = await send(page, { type: "getState" });
+  expect(state.activityLog).toEqual([]);
+  await page.close();
+});
+
 test("'excluir este sitio' agrega el dominio a las exclusiones", async () => {
   const page = await extPage("options");
   const res = await send(page, {

@@ -15,6 +15,7 @@
     "webext:lint": "addons-linter dist/firefox --self-hosted",
     "webext:run": "npx web-ext run --source-dir dist/firefox",
     "test:e2e": "npm run build:chrome && playwright test",
+    "bench": "npm run build:chrome && node scripts/bench.mjs",
     "icons": "bash scripts/make-icons.sh",
     "test:e2e:firefox": "npm run build:firefox && node tests/e2e/firefox-smoke.mjs"
   },

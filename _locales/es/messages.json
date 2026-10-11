@@ -305,5 +305,74 @@
         "content": "$1"
       }
     }
+  },
+  "activitySection": {
+    "message": "Actividad"
+  },
+  "clearActivity": {
+    "message": "Borrar historial"
+  },
+  "emptyActivity": {
+    "message": "Todavía no hay actividad."
+  },
+  "pausedSites": {
+    "message": "Sitios en pausa"
+  },
+  "logApply": {
+    "message": "Configuración aplicada (+$added$ −$removed$ reglas)",
+    "placeholders": {
+      "added": {
+        "content": "$1"
+      },
+      "removed": {
+        "content": "$2"
+      }
+    }
+  },
+  "logProfile": {
+    "message": "Perfil aplicado: $name$",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "logImport": {
+    "message": "Configuración importada"
+  },
+  "logPause": {
+    "message": "Bloqueo en pausa en $domain$ hasta las $time$",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      },
+      "time": {
+        "content": "$2"
+      }
+    }
+  },
+  "logResume": {
+    "message": "Bloqueo reanudado en $domain$",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "logDiscard": {
+    "message": "$count$ pestañas descartadas",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "logError": {
+    "message": "Falló la aplicación: $detail$",
+    "placeholders": {
+      "detail": {
+        "content": "$1"
+      }
+    }
   }
 }

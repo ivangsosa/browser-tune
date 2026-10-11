@@ -305,5 +305,74 @@
         "content": "$1"
       }
     }
+  },
+  "activitySection": {
+    "message": "Atividade"
+  },
+  "clearActivity": {
+    "message": "Limpar histórico"
+  },
+  "emptyActivity": {
+    "message": "Ainda não há atividade."
+  },
+  "pausedSites": {
+    "message": "Sites em pausa"
+  },
+  "logApply": {
+    "message": "Configurações aplicadas (+$added$ −$removed$ regras)",
+    "placeholders": {
+      "added": {
+        "content": "$1"
+      },
+      "removed": {
+        "content": "$2"
+      }
+    }
+  },
+  "logProfile": {
+    "message": "Perfil aplicado: $name$",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "logImport": {
+    "message": "Configurações importadas"
+  },
+  "logPause": {
+    "message": "Bloqueio pausado em $domain$ até $time$",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      },
+      "time": {
+        "content": "$2"
+      }
+    }
+  },
+  "logResume": {
+    "message": "Bloqueio retomado em $domain$",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "logDiscard": {
+    "message": "$count$ abas descartadas",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "logError": {
+    "message": "Falha ao aplicar: $detail$",
+    "placeholders": {
+      "detail": {
+        "content": "$1"
+      }
+    }
   }
 }

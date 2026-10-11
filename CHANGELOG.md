@@ -5,6 +5,14 @@ proyecto usa versionado semántico.
 
 ## [Unreleased]
 
+### Added
+
+- Atajo de teclado para descartar pestañas inactivas (Alt+Shift+D, personalizable).
+- Contador de pestañas descartadas en el ícono de la extensión.
+- Historial de actividad: qué hizo la extensión y cuándo (perfil aplicado, pausas, descartes, importaciones, errores), en Opciones.
+- Lista de todos los sitios en pausa en el popup, con botón para reanudar.
+- Benchmark automatizado (`npm run bench`): mide solicitudes bloqueadas y tiempo de carga.
+
 ## [0.2.0] - 2026-10-11
 
 ### Added

@@ -2,7 +2,7 @@ import { activePauses, desiredPauseRules, withPause } from "../core/rules-engine
 import type { PauseEntry } from "../core/types";
 import { getCapabilities } from "../platform/capabilities";
 import { applySessionRules } from "../platform/network-rules";
-import { loadPauses, savePauses } from "../platform/storage";
+import { loadPauses, logActivity, savePauses } from "../platform/storage";
 
 const ALARM_NAME = "browser-tune:pause-expiry";
 
@@ -34,11 +34,13 @@ export async function pauseSite(
 ): Promise<PauseEntry[]> {
   const until = Date.now() + minutes * 60_000;
   await savePauses(withPause(await loadPauses(), domain, until));
+  await logActivity({ kind: "pause", domain, until });
   return refreshPauses();
 }
 
 export async function resumeSite(domain: string): Promise<PauseEntry[]> {
   await savePauses((await loadPauses()).filter((p) => p.domain !== domain));
+  await logActivity({ kind: "resume", domain });
   return refreshPauses();
 }
 

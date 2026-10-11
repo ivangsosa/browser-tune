@@ -9,10 +9,13 @@ import type {
 import { getCapabilities } from "../platform/capabilities";
 import { getManagedDynamicRules } from "../platform/network-rules";
 import {
+  clearActivity,
   getLastError,
   importSettings,
+  loadActivity,
   loadPauses,
   loadSettings,
+  logActivity,
   saveSettings,
   setLastError
 } from "../platform/storage";
@@ -23,13 +26,27 @@ import {
   countDiscarded,
   discardNow,
   initTabTracking,
-  seedMissing
+  seedMissing,
+  updateBadge
 } from "./tab-tracker";
 
 // Registrar listeners en el top-level: el SW/event page puede morir y
 // volver, y los listeners deben existir desde el primer evento.
 initTabTracking();
 initPauseExpiry();
+
+if (chrome.commands?.onCommand) {
+  chrome.commands.onCommand.addListener((command) => {
+    if (command === "discard-now") {
+      void loadSettings()
+        .then(discardNow)
+        .then(async (n) => {
+          if (n > 0) await logActivity({ kind: "discard", count: n });
+          await updateBadge();
+        });
+    }
+  });
+}
 
 const errorMessage = (e: unknown): string =>
   e instanceof Error ? e.message : String(e);
@@ -42,6 +59,7 @@ async function restoreAndApply(): Promise<void> {
     await applySettings(settings);
     await seedMissing();
     await setLastError(null);
+    await updateBadge();
   } catch (e) {
     // Un wake no debe tumbar el SW: el próximo evento lo reintenta.
     console.error("browser-tune: restore falló", e);
@@ -94,7 +112,8 @@ async function getState(): Promise<StateResponse> {
       : 0,
     pauses: activePauses(await loadPauses(), Date.now()),
     discardedTabs: await countDiscarded(),
-    lastError: await getLastError()
+    lastError: await getLastError(),
+    activityLog: await loadActivity()
   };
 }
 
@@ -106,12 +125,35 @@ async function handleMessage(
       return getState();
     case "setProfile": {
       const current = await loadSettings();
-      return persistAndApply(applyProfileTemplate(current, msg.profile));
+      const res = await persistAndApply(applyProfileTemplate(current, msg.profile));
+      if (res.ok) {
+        await logActivity({
+          kind: "profile",
+          profile: msg.profile,
+          added: res.summary?.rulesAdded ?? 0,
+          removed: res.summary?.rulesRemoved ?? 0
+        });
+      }
+      return res;
     }
-    case "saveSettings":
-      return persistAndApply(sanitizeSettings(msg.settings));
-    case "importSettings":
-      return persistAndApply(importSettings(msg.json));
+    case "saveSettings": {
+      const res = await persistAndApply(sanitizeSettings(msg.settings));
+      if (res.ok) {
+        await logActivity({
+          kind: "apply",
+          added: res.summary?.rulesAdded ?? 0,
+          removed: res.summary?.rulesRemoved ?? 0
+        });
+      } else {
+        await logActivity({ kind: "error", error: res.error ?? "unknown" });
+      }
+      return res;
+    }
+    case "importSettings": {
+      const res = await persistAndApply(importSettings(msg.json));
+      if (res.ok) await logActivity({ kind: "import" });
+      return res;
+    }
     case "reapply":
       return persistAndApply(await loadSettings());
     case "excludeSite": {
@@ -163,8 +205,14 @@ async function handleMessage(
       if (!getCapabilities().tabDiscard) {
         return { ok: false, error: "tabs.discard no disponible" };
       }
-      return { ok: true, discarded: await discardNow(await loadSettings()) };
+      const discarded = await discardNow(await loadSettings());
+      if (discarded > 0) await logActivity({ kind: "discard", count: discarded });
+      await updateBadge();
+      return { ok: true, discarded };
     }
+    case "clearActivity":
+      await clearActivity();
+      return { ok: true };
     default:
       return { ok: false, error: "mensaje desconocido" };
   }

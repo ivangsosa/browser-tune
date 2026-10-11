@@ -171,6 +171,26 @@ a {
   outline-offset: 2px;
 }
 
+.activity {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  font-size: 12px;
+}
+
+.activity li {
+  padding: 2px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.activity .stamp {
+  color: var(--muted);
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+}
+
 [hidden] {
   display: none !important;
 }

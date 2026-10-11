@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-11T18:33:00.244Z",
+  "scenario": {
+    "thirdParty": 40,
+    "firstParty": 8
+  },
+  "baseline": {
+    "loadMs": 919,
+    "thirdPartyHits": 40
+  },
+  "withBlocking": {
+    "loadMs": 845,
+    "thirdPartyHits": 0
+  },
+  "blockedRequests": 40
+}

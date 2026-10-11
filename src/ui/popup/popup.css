@@ -114,3 +114,17 @@ button {
   clip-path: inset(50%);
   white-space: nowrap;
 }
+
+.pauses {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0;
+}
+
+.pauses li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 3px 0;
+}

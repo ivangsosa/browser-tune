@@ -19,6 +19,9 @@ describe("manifiestos", () => {
       expect(
         manifest.declarative_net_request.rule_resources[0].enabled
       ).toBe(true);
+      expect(manifest.commands["discard-now"].description).toBe(
+        "__MSG_discardNow__"
+      );
     });
   }
 
