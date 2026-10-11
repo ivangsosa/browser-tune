@@ -1,17 +1,23 @@
 import { loadSettings, saveSettings } from "../platform/storage";
+import { applySettings } from "./apply-profile";
 
-// Instalación: persistir defaults (o migrar settings existentes tras update).
+// onInstalled/onStartup: migrar/persistir settings y re-aplicar el estado
+// deseado. Todo se reconstruye desde storage — nada depende de memoria del SW.
+async function restoreAndApply(): Promise<void> {
+  const settings = await loadSettings();
+  await applySettings(settings);
+}
+
 chrome.runtime.onInstalled.addListener((details) => {
   void (async () => {
     const settings = await loadSettings();
     if (details.reason === "install" || details.reason === "update") {
       await saveSettings(settings);
     }
+    await applySettings(settings);
   })();
 });
 
-// El SW/event page puede reiniciarse: todo estado se reconstruye desde
-// storage, no desde memoria.
 chrome.runtime.onStartup.addListener(() => {
-  void loadSettings();
+  void restoreAndApply();
 });

@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "requestDomains": ["doubleclick.net"],
+      "excludedResourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "requestDomains": ["google-analytics.com"],
+      "excludedResourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 3,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "requestDomains": ["scorecardresearch.com"],
+      "excludedResourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 4,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "requestDomains": ["quantserve.com"],
+      "excludedResourceTypes": ["main_frame"]
+    }
+  }
+]
