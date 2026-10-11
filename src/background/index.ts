@@ -22,18 +22,27 @@ initTabTracking();
 // onInstalled/onStartup: migrar/persistir settings y re-aplicar el estado
 // deseado. Todo se reconstruye desde storage — nada depende de memoria del SW.
 async function restoreAndApply(): Promise<void> {
-  const settings = await loadSettings();
-  await applySettings(settings);
-  await seedMissing();
+  try {
+    const settings = await loadSettings();
+    await applySettings(settings);
+    await seedMissing();
+  } catch (e) {
+    // Un wake no debe tumbar el SW: el próximo evento lo reintenta.
+    console.error("browser-tune: restore falló", e);
+  }
 }
 
 chrome.runtime.onInstalled.addListener((details) => {
   void (async () => {
-    const settings = await loadSettings();
-    if (details.reason === "install" || details.reason === "update") {
-      await saveSettings(settings);
+    try {
+      const settings = await loadSettings();
+      if (details.reason === "install" || details.reason === "update") {
+        await saveSettings(settings);
+      }
+      await applySettings(settings);
+    } catch (e) {
+      console.error("browser-tune: onInstalled falló", e);
     }
-    await applySettings(settings);
   })();
 });
 
