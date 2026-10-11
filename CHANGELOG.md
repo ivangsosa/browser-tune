@@ -5,6 +5,8 @@ proyecto usa versionado semántico.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-10-11
+
 ### Added
 
 - Controles por sitio en el popup: no bloquear, no descartar, o pausar el bloqueo por 15 min, 1 h o 4 h.
