@@ -1,0 +1,141 @@
+{
+  "appDesc": {
+    "message": "Perfis de desempenho e memória, bloqueio de domínios e descarte seguro de abas. Tudo local, sem telemetria."
+  },
+  "appTitle": {
+    "message": "browser-tune"
+  },
+  "optionsTitle": {
+    "message": "browser-tune — Opções"
+  },
+  "profileLabel": {
+    "message": "Perfil"
+  },
+  "profileBalanced": {
+    "message": "Equilibrado"
+  },
+  "profileLowResource": {
+    "message": "Economia de recursos"
+  },
+  "profilePrivacy": {
+    "message": "Privacidade"
+  },
+  "profileCustom": {
+    "message": "Personalizado"
+  },
+  "domainBlocking": {
+    "message": "Bloqueio de domínios"
+  },
+  "discardInactiveTabs": {
+    "message": "Descartar abas inativas"
+  },
+  "optionsButton": {
+    "message": "Opções"
+  },
+  "activeRules": {
+    "message": "Regras ativas: $count$",
+    "placeholders": {
+      "count": { "content": "$1" }
+    }
+  },
+  "appliedDiff": {
+    "message": "Aplicado: +$added$ −$removed$ regras",
+    "placeholders": {
+      "added": { "content": "$1" },
+      "removed": { "content": "$2" }
+    }
+  },
+  "appliedPlain": {
+    "message": "Aplicado"
+  },
+  "errorPrefix": {
+    "message": "Erro: $detail$",
+    "placeholders": {
+      "detail": { "content": "$1" }
+    }
+  },
+  "unavailableDnr": {
+    "message": "bloqueio de domínios indisponível"
+  },
+  "unavailableDiscard": {
+    "message": "descarte de abas indisponível"
+  },
+  "unavailablePrefix": {
+    "message": "Indisponível: $items$",
+    "placeholders": {
+      "items": { "content": "$1" }
+    }
+  },
+  "profileHint": {
+    "message": "Aplicar um perfil substitui as configurações abaixo. Qualquer alteração manual muda para Personalizado."
+  },
+  "enabledLabel": {
+    "message": "Ativado"
+  },
+  "blockedDomainsLabel": {
+    "message": "Domínios bloqueados (um por linha, máx. 5000)"
+  },
+  "excludedBlockingLabel": {
+    "message": "Excluir do bloqueio (um por linha)"
+  },
+  "sectionDiscard": {
+    "message": "Descarte de abas"
+  },
+  "discardBefore": {
+    "message": "Descartar após"
+  },
+  "discardAfter": {
+    "message": "minutos de inatividade"
+  },
+  "discardExcludedLabel": {
+    "message": "Nunca descartar abas de (um por linha)"
+  },
+  "discardHint": {
+    "message": "Uma aba descartada recarrega ao ser selecionada e pode perder dados de formulários não salvos."
+  },
+  "sectionBrowserSettings": {
+    "message": "Configurações do navegador"
+  },
+  "browserSettingsHint": {
+    "message": "Extensões não podem alterar configurações do navegador — aplique manualmente se quiser."
+  },
+  "sectionBackup": {
+    "message": "Backup"
+  },
+  "exportButton": {
+    "message": "Exportar configurações"
+  },
+  "importLabel": {
+    "message": "Importar configurações (JSON)"
+  },
+  "importButton": {
+    "message": "Importar e aplicar"
+  },
+  "saveButton": {
+    "message": "Salvar e aplicar"
+  },
+  "tipChromiumMemorySaver": {
+    "message": "Ative o Memory Saver (Configurações → Desempenho)."
+  },
+  "tipChromiumPreload": {
+    "message": "Desative o pré-carregamento de páginas para usar menos memória (Configurações → Desempenho)."
+  },
+  "tipChromiumShields": {
+    "message": "Somente Brave: o Shields já bloqueia anúncios e rastreadores — listas extras de bloqueio agregam pouco."
+  },
+  "tipFirefoxUnload": {
+    "message": "No about:config, mantenha browser.tabs.unloadOnLowMemory como true — descarregamento automático de abas com pouca memória."
+  },
+  "tipFirefoxEtp": {
+    "message": "Mantenha a Proteção Aprimorada contra Rastreamento ativada (about:preferences#privacy)."
+  },
+  "rulesetPredefined": {
+    "message": "Lista de bloqueio conservadora"
+  },
+  "openSettings": {
+    "message": "Abrir configurações"
+  },
+  "learnMore": {
+    "message": "Saiba mais"
+  }
+}

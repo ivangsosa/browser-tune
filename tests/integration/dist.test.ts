@@ -24,7 +24,10 @@ describe.skipIf(!DIST_EXISTS)("paquetes dist/", () => {
         "popup.js",
         "options.html",
         "options.js",
-        "rulesets/predefined.json"
+        "rulesets/predefined.json",
+        "_locales/en/messages.json",
+        "_locales/es/messages.json",
+        "_locales/pt/messages.json"
       ]) {
         expect(existsSync(resolve(dir, f)), f).toBe(true);
       }
@@ -33,6 +36,7 @@ describe.skipIf(!DIST_EXISTS)("paquetes dist/", () => {
 
     it(`${target}: manifiesto MV3 válido y mínimo privilegio`, () => {
       expect(manifest.manifest_version).toBe(3);
+      expect(manifest.default_locale).toBe("en");
       expect(manifest.permissions).not.toContain("<all_urls>");
       expect(manifest.host_permissions ?? []).toEqual([]);
       expect(manifest.icons).toBeTruthy();

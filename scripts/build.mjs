@@ -53,6 +53,7 @@ async function buildTarget(target) {
     resolve(outDir, "manifest.json")
   );
   await cp(resolve(ROOT, "rulesets"), resolve(outDir, "rulesets"), { recursive: true });
+  await cp(resolve(ROOT, "_locales"), resolve(outDir, "_locales"), { recursive: true });
   await cp(resolve(ROOT, "icons"), resolve(outDir, "icons"), { recursive: true });
   await cp(resolve(ROOT, "src/ui/popup/index.html"), resolve(outDir, "popup.html"));
   await cp(resolve(ROOT, "src/ui/options/index.html"), resolve(outDir, "options.html"));

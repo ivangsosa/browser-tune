@@ -3,35 +3,35 @@
   <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="popup.css" />
-    <title>browser-tune</title>
+    <title data-i18n="appTitle">browser-tune</title>
   </head>
   <body>
     <h1>browser-tune</h1>
 
     <label class="row" for="profile">
-      Profile
+      <span data-i18n="profileLabel">Profile</span>
       <select id="profile">
-        <option value="balanced">Balanced</option>
-        <option value="low-resource">Low Resource</option>
-        <option value="privacy">Privacy</option>
-        <option value="custom">Custom</option>
+        <option value="balanced" data-i18n="profileBalanced">Balanced</option>
+        <option value="low-resource" data-i18n="profileLowResource">Low Resource</option>
+        <option value="privacy" data-i18n="profilePrivacy">Privacy</option>
+        <option value="custom" data-i18n="profileCustom">Custom</option>
       </select>
     </label>
 
     <label class="row">
       <input type="checkbox" id="blocking" />
-      Domain blocking
+      <span data-i18n="domainBlocking">Domain blocking</span>
     </label>
 
     <label class="row">
       <input type="checkbox" id="discard" />
-      Discard inactive tabs
+      <span data-i18n="discardInactiveTabs">Discard inactive tabs</span>
     </label>
 
     <p id="status" class="status"></p>
     <p id="warnings" class="warnings"></p>
 
-    <button id="open-options" type="button">Options</button>
+    <button id="open-options" type="button" data-i18n="optionsButton">Options</button>
 
     <script src="popup.js"></script>
   </body>

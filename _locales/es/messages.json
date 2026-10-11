@@ -1,0 +1,141 @@
+{
+  "appDesc": {
+    "message": "Perfiles de rendimiento y memoria, bloqueo de dominios y descarte seguro de pestañas. Todo local, sin telemetría."
+  },
+  "appTitle": {
+    "message": "browser-tune"
+  },
+  "optionsTitle": {
+    "message": "browser-tune — Opciones"
+  },
+  "profileLabel": {
+    "message": "Perfil"
+  },
+  "profileBalanced": {
+    "message": "Equilibrado"
+  },
+  "profileLowResource": {
+    "message": "Ahorro de recursos"
+  },
+  "profilePrivacy": {
+    "message": "Privacidad"
+  },
+  "profileCustom": {
+    "message": "Personalizado"
+  },
+  "domainBlocking": {
+    "message": "Bloqueo de dominios"
+  },
+  "discardInactiveTabs": {
+    "message": "Descartar pestañas inactivas"
+  },
+  "optionsButton": {
+    "message": "Opciones"
+  },
+  "activeRules": {
+    "message": "Reglas activas: $count$",
+    "placeholders": {
+      "count": { "content": "$1" }
+    }
+  },
+  "appliedDiff": {
+    "message": "Aplicado: +$added$ −$removed$ reglas",
+    "placeholders": {
+      "added": { "content": "$1" },
+      "removed": { "content": "$2" }
+    }
+  },
+  "appliedPlain": {
+    "message": "Aplicado"
+  },
+  "errorPrefix": {
+    "message": "Error: $detail$",
+    "placeholders": {
+      "detail": { "content": "$1" }
+    }
+  },
+  "unavailableDnr": {
+    "message": "bloqueo de dominios no disponible"
+  },
+  "unavailableDiscard": {
+    "message": "descarte de pestañas no disponible"
+  },
+  "unavailablePrefix": {
+    "message": "No disponible: $items$",
+    "placeholders": {
+      "items": { "content": "$1" }
+    }
+  },
+  "profileHint": {
+    "message": "Aplicar un perfil reemplaza la configuración de abajo. Cualquier cambio manual pasa a Personalizado."
+  },
+  "enabledLabel": {
+    "message": "Activado"
+  },
+  "blockedDomainsLabel": {
+    "message": "Dominios bloqueados (uno por línea, máx. 5000)"
+  },
+  "excludedBlockingLabel": {
+    "message": "Excluir del bloqueo (uno por línea)"
+  },
+  "sectionDiscard": {
+    "message": "Descarte de pestañas"
+  },
+  "discardBefore": {
+    "message": "Descartar tras"
+  },
+  "discardAfter": {
+    "message": "minutos de inactividad"
+  },
+  "discardExcludedLabel": {
+    "message": "No descartar pestañas de (uno por línea)"
+  },
+  "discardHint": {
+    "message": "Una pestaña descartada se recarga al seleccionarla y puede perder datos de formularios sin guardar."
+  },
+  "sectionBrowserSettings": {
+    "message": "Configuración del navegador"
+  },
+  "browserSettingsHint": {
+    "message": "Las extensiones no pueden cambiar la configuración del navegador — aplicalos manualmente si querés."
+  },
+  "sectionBackup": {
+    "message": "Respaldo"
+  },
+  "exportButton": {
+    "message": "Exportar configuración"
+  },
+  "importLabel": {
+    "message": "Importar configuración (JSON)"
+  },
+  "importButton": {
+    "message": "Importar y aplicar"
+  },
+  "saveButton": {
+    "message": "Guardar y aplicar"
+  },
+  "tipChromiumMemorySaver": {
+    "message": "Activá Memory Saver (Configuración → Rendimiento)."
+  },
+  "tipChromiumPreload": {
+    "message": "Desactivá la precarga de páginas si querés usar menos memoria (Configuración → Rendimiento)."
+  },
+  "tipChromiumShields": {
+    "message": "Solo Brave: Shields ya bloquea publicidad y rastreadores — listas de bloqueo extra aportan poco."
+  },
+  "tipFirefoxUnload": {
+    "message": "En about:config, mantené browser.tabs.unloadOnLowMemory en true — descarga automática de pestañas con poca memoria."
+  },
+  "tipFirefoxEtp": {
+    "message": "Mantené activada la Protección mejorada contra rastreo (about:preferences#privacy)."
+  },
+  "rulesetPredefined": {
+    "message": "Lista de bloqueo conservadora"
+  },
+  "openSettings": {
+    "message": "Abrir configuración"
+  },
+  "learnMore": {
+    "message": "Más información"
+  }
+}

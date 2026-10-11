@@ -1,4 +1,5 @@
 import "./popup.css";
+import { localizePage, t } from "../i18n";
 import type {
   ApplyResponse,
   BgRequest,
@@ -27,23 +28,23 @@ function render(s: StateResponse): void {
   profileEl.value = s.derivedProfile;
   blockingEl.checked = s.settings.blocking.enabled;
   discardEl.checked = s.settings.tabDiscard.enabled;
-  statusEl.textContent = `Active rules: ${s.managedRuleCount}`;
+  statusEl.textContent = t("activeRules", String(s.managedRuleCount));
 
   const missing: string[] = [];
-  if (!s.capabilities.dnr) missing.push("domain blocking unavailable");
-  if (!s.capabilities.tabDiscard) missing.push("tab discard unavailable");
+  if (!s.capabilities.dnr) missing.push(t("unavailableDnr"));
+  if (!s.capabilities.tabDiscard) missing.push(t("unavailableDiscard"));
   warningsEl.textContent = missing.join(" · ");
 }
 
 function renderApplyResult(res: ApplyResponse): void {
   if (!res.ok) {
-    statusEl.textContent = `Error: ${res.error ?? "unknown"}`;
+    statusEl.textContent = t("errorPrefix", res.error ?? "unknown");
     return;
   }
   const sum = res.summary;
   statusEl.textContent = sum
-    ? `Applied: +${sum.rulesAdded} −${sum.rulesRemoved} rules`
-    : "Applied";
+    ? t("appliedDiff", [String(sum.rulesAdded), String(sum.rulesRemoved)])
+    : t("appliedPlain");
 }
 
 async function refresh(): Promise<void> {
@@ -92,4 +93,5 @@ optionsBtn.addEventListener("click", () => {
   void chrome.runtime.openOptionsPage();
 });
 
+localizePage();
 void refresh();

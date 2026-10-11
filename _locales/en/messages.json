@@ -1,0 +1,141 @@
+{
+  "appDesc": {
+    "message": "Performance and memory profiles, domain blocking and safe tab discarding. Local-first, no telemetry."
+  },
+  "appTitle": {
+    "message": "browser-tune"
+  },
+  "optionsTitle": {
+    "message": "browser-tune — Options"
+  },
+  "profileLabel": {
+    "message": "Profile"
+  },
+  "profileBalanced": {
+    "message": "Balanced"
+  },
+  "profileLowResource": {
+    "message": "Low Resource"
+  },
+  "profilePrivacy": {
+    "message": "Privacy"
+  },
+  "profileCustom": {
+    "message": "Custom"
+  },
+  "domainBlocking": {
+    "message": "Domain blocking"
+  },
+  "discardInactiveTabs": {
+    "message": "Discard inactive tabs"
+  },
+  "optionsButton": {
+    "message": "Options"
+  },
+  "activeRules": {
+    "message": "Active rules: $count$",
+    "placeholders": {
+      "count": { "content": "$1" }
+    }
+  },
+  "appliedDiff": {
+    "message": "Applied: +$added$ −$removed$ rules",
+    "placeholders": {
+      "added": { "content": "$1" },
+      "removed": { "content": "$2" }
+    }
+  },
+  "appliedPlain": {
+    "message": "Applied"
+  },
+  "errorPrefix": {
+    "message": "Error: $detail$",
+    "placeholders": {
+      "detail": { "content": "$1" }
+    }
+  },
+  "unavailableDnr": {
+    "message": "domain blocking unavailable"
+  },
+  "unavailableDiscard": {
+    "message": "tab discard unavailable"
+  },
+  "unavailablePrefix": {
+    "message": "Unavailable: $items$",
+    "placeholders": {
+      "items": { "content": "$1" }
+    }
+  },
+  "profileHint": {
+    "message": "Applying a profile replaces the settings below. Any manual change switches to Custom."
+  },
+  "enabledLabel": {
+    "message": "Enabled"
+  },
+  "blockedDomainsLabel": {
+    "message": "Blocked domains (one per line, max 5000)"
+  },
+  "excludedBlockingLabel": {
+    "message": "Excluded from blocking (one per line)"
+  },
+  "sectionDiscard": {
+    "message": "Tab discarding"
+  },
+  "discardBefore": {
+    "message": "Discard after"
+  },
+  "discardAfter": {
+    "message": "minutes inactive"
+  },
+  "discardExcludedLabel": {
+    "message": "Never discard tabs from (one per line)"
+  },
+  "discardHint": {
+    "message": "A discarded tab reloads when you select it and may lose unsaved form state."
+  },
+  "sectionBrowserSettings": {
+    "message": "Browser settings"
+  },
+  "browserSettingsHint": {
+    "message": "Extensions cannot change browser settings — apply these manually if you want them."
+  },
+  "sectionBackup": {
+    "message": "Backup"
+  },
+  "exportButton": {
+    "message": "Export settings"
+  },
+  "importLabel": {
+    "message": "Import settings (JSON)"
+  },
+  "importButton": {
+    "message": "Import and apply"
+  },
+  "saveButton": {
+    "message": "Save and apply"
+  },
+  "tipChromiumMemorySaver": {
+    "message": "Turn on Memory Saver (Settings → Performance)."
+  },
+  "tipChromiumPreload": {
+    "message": "Disable page preloading if you want lower memory usage (Settings → Performance)."
+  },
+  "tipChromiumShields": {
+    "message": "Brave only: Shields already blocks ads and trackers — overlapping blocking lists add little benefit."
+  },
+  "tipFirefoxUnload": {
+    "message": "In about:config, keep browser.tabs.unloadOnLowMemory set to true — automatic tab unloading on low memory."
+  },
+  "tipFirefoxEtp": {
+    "message": "Keep Enhanced Tracking Protection enabled (about:preferences#privacy)."
+  },
+  "rulesetPredefined": {
+    "message": "Conservative blocklist"
+  },
+  "openSettings": {
+    "message": "Open settings"
+  },
+  "learnMore": {
+    "message": "Learn more"
+  }
+}

@@ -3,62 +3,64 @@
   <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="options.css" />
-    <title>browser-tune — Options</title>
+    <title data-i18n="optionsTitle">browser-tune — Options</title>
   </head>
   <body>
-    <h1>browser-tune — Options</h1>
+    <h1 data-i18n="optionsTitle">browser-tune — Options</h1>
 
     <section>
-      <h2>Profile</h2>
+      <h2 data-i18n="profileLabel">Profile</h2>
       <select id="profile">
-        <option value="balanced">Balanced</option>
-        <option value="low-resource">Low Resource</option>
-        <option value="privacy">Privacy</option>
-        <option value="custom">Custom</option>
+        <option value="balanced" data-i18n="profileBalanced">Balanced</option>
+        <option value="low-resource" data-i18n="profileLowResource">Low Resource</option>
+        <option value="privacy" data-i18n="profilePrivacy">Privacy</option>
+        <option value="custom" data-i18n="profileCustom">Custom</option>
       </select>
-      <p class="hint">Applying a profile replaces the settings below. Any manual change switches to Custom.</p>
+      <p class="hint" data-i18n="profileHint">Applying a profile replaces the settings below. Any manual change switches to Custom.</p>
     </section>
 
     <section>
-      <h2>Domain blocking</h2>
-      <label><input type="checkbox" id="blocking-enabled" /> Enabled</label>
+      <h2 data-i18n="domainBlocking">Domain blocking</h2>
+      <label><input type="checkbox" id="blocking-enabled" /> <span data-i18n="enabledLabel">Enabled</span></label>
       <fieldset id="rulesets"></fieldset>
-      <label for="blocked-domains">Blocked domains (one per line, max 5000)</label>
+      <label for="blocked-domains" data-i18n="blockedDomainsLabel">Blocked domains (one per line, max 5000)</label>
       <textarea id="blocked-domains" rows="6"></textarea>
-      <label for="excluded-domains">Excluded from blocking (one per line)</label>
+      <label for="excluded-domains" data-i18n="excludedBlockingLabel">Excluded from blocking (one per line)</label>
       <textarea id="excluded-domains" rows="4"></textarea>
     </section>
 
     <section>
-      <h2>Tab discarding</h2>
-      <label><input type="checkbox" id="discard-enabled" /> Enabled</label>
+      <h2 data-i18n="sectionDiscard">Tab discarding</h2>
+      <label><input type="checkbox" id="discard-enabled" /> <span data-i18n="enabledLabel">Enabled</span></label>
       <label for="inactive-minutes">
-        Discard after <input type="number" id="inactive-minutes" min="5" max="1440" step="5" /> minutes inactive
+        <span data-i18n="discardBefore">Discard after</span>
+        <input type="number" id="inactive-minutes" min="5" max="1440" step="5" />
+        <span data-i18n="discardAfter">minutes inactive</span>
       </label>
-      <label for="discard-excluded">Never discard tabs from (one per line)</label>
+      <label for="discard-excluded" data-i18n="discardExcludedLabel">Never discard tabs from (one per line)</label>
       <textarea id="discard-excluded" rows="4"></textarea>
-      <p class="hint">A discarded tab reloads when you select it and may lose unsaved form state.</p>
+      <p class="hint" data-i18n="discardHint">A discarded tab reloads when you select it and may lose unsaved form state.</p>
     </section>
 
     <section>
-      <h2>Browser settings</h2>
-      <p class="hint">
+      <h2 data-i18n="sectionBrowserSettings">Browser settings</h2>
+      <p class="hint" data-i18n="browserSettingsHint">
         Extensions cannot change browser settings — apply these manually if you want them.
       </p>
       <ul id="browser-tips"></ul>
     </section>
 
     <section>
-      <h2>Backup</h2>
-      <button id="export" type="button">Export settings</button>
+      <h2 data-i18n="sectionBackup">Backup</h2>
+      <button id="export" type="button" data-i18n="exportButton">Export settings</button>
       <textarea id="export-json" rows="6" readonly></textarea>
-      <label for="import-json">Import settings (JSON)</label>
+      <label for="import-json" data-i18n="importLabel">Import settings (JSON)</label>
       <textarea id="import-json" rows="6"></textarea>
-      <button id="import" type="button">Import and apply</button>
+      <button id="import" type="button" data-i18n="importButton">Import and apply</button>
     </section>
 
     <p id="status" class="status"></p>
-    <button id="save" type="button">Save and apply</button>
+    <button id="save" type="button" data-i18n="saveButton">Save and apply</button>
 
     <script src="options.js"></script>
   </body>

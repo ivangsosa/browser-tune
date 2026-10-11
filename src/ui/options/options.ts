@@ -1,4 +1,5 @@
 import "./options.css";
+import { localizePage, t } from "../i18n";
 import { AVAILABLE_RULESETS } from "../../data/default-profiles";
 import type {
   ApplyResponse,
@@ -27,15 +28,36 @@ const statusEl = $<HTMLParagraphElement>("status");
 const tipsEl = $<HTMLUListElement>("browser-tips");
 
 // Ajustes nativos que la extensión no puede tocar — solo se sugieren.
-const BROWSER_TIPS: Record<"firefox" | "chromium", string[]> = {
+// internalUrl: se intenta abrir via tabs.create (si el navegador lo bloquea,
+// el botón se reemplaza por texto copiable). docUrl: documentación oficial.
+interface Tip {
+  textKey: string;
+  internalUrl?: string;
+  docUrl?: string;
+}
+
+const BROWSER_TIPS: Record<"firefox" | "chromium", Tip[]> = {
   chromium: [
-    "Settings → Performance → turn on Memory Saver (chrome://settings/performance, brave://settings/performance).",
-    "Settings → Performance → disable page preloading if you want lower memory usage.",
-    "Brave only: Shields already blocks ads/trackers — overlapping blocking lists add little benefit."
+    {
+      textKey: "tipChromiumMemorySaver",
+      internalUrl: "chrome://settings/performance"
+    },
+    {
+      textKey: "tipChromiumPreload",
+      internalUrl: "chrome://settings/performance"
+    },
+    { textKey: "tipChromiumShields", internalUrl: "brave://settings/shields" }
   ],
   firefox: [
-    "about:config → browser.tabs.unloadOnLowMemory should stay true (default — automatic tab unloading on low memory).",
-    "about:preferences → Privacy & Security → keep Enhanced Tracking Protection on — it already covers most tracker blocking."
+    {
+      textKey: "tipFirefoxUnload",
+      docUrl: "https://support.mozilla.org/kb/about-config-editor-firefox"
+    },
+    {
+      textKey: "tipFirefoxEtp",
+      docUrl:
+        "https://support.mozilla.org/kb/enhanced-tracking-protection-firefox-desktop"
+    }
   ]
 };
 
@@ -59,7 +81,7 @@ function renderRulesets(enabled: string[]): void {
     input.value = rs.id;
     input.checked = enabled.includes(rs.id);
     input.dataset.ruleset = rs.id;
-    label.append(input, ` ${rs.label}`);
+    label.append(input, ` ${t(rs.labelKey)}`);
     rulesetsEl.append(label);
   }
 }
@@ -75,19 +97,12 @@ function render(s: StateResponse): void {
   discardExcludedEl.value = s.settings.tabDiscard.excludedDomains.join("\n");
 
   const missing: string[] = [];
-  if (!s.capabilities.dnr) missing.push("domain blocking unavailable");
-  if (!s.capabilities.tabDiscard) missing.push("tab discard unavailable");
+  if (!s.capabilities.dnr) missing.push(t("unavailableDnr"));
+  if (!s.capabilities.tabDiscard) missing.push(t("unavailableDiscard"));
   statusEl.textContent =
-    missing.length > 0 ? `Unavailable: ${missing.join(", ")}` : "";
+    missing.length > 0 ? t("unavailablePrefix", missing.join(", ")) : "";
 
-  const tips = BROWSER_TIPS[s.capabilities.isFirefox ? "firefox" : "chromium"];
-  tipsEl.replaceChildren(
-    ...tips.map((tip) => {
-      const li = document.createElement("li");
-      li.textContent = tip;
-      return li;
-    })
-  );
+  renderTips(BROWSER_TIPS[s.capabilities.isFirefox ? "firefox" : "chromium"]);
 }
 
 function collectSettings(base: ExtensionSettings): ExtensionSettings {
@@ -114,16 +129,54 @@ function collectSettings(base: ExtensionSettings): ExtensionSettings {
   };
 }
 
+function renderTips(tips: Tip[]): void {
+  tipsEl.replaceChildren();
+  for (const tip of tips) {
+    const li = document.createElement("li");
+    const span = document.createElement("span");
+    span.textContent = t(tip.textKey);
+    li.append(span, " ");
+    if (tip.internalUrl) {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "tip-action";
+      btn.textContent = t("openSettings");
+      btn.addEventListener("click", async () => {
+        try {
+          await chrome.tabs.create({ url: tip.internalUrl! });
+        } catch {
+          // Navegador bloqueó la URL interna: dejar el texto copiable.
+          const code = document.createElement("code");
+          code.textContent = tip.internalUrl!;
+          btn.replaceWith(code);
+        }
+      });
+      li.append(btn, " ");
+    }
+    if (tip.docUrl) {
+      const a = document.createElement("a");
+      a.href = tip.docUrl;
+      a.target = "_blank";
+      a.rel = "noreferrer";
+      a.textContent = t("learnMore");
+      li.append(a);
+    }
+    tipsEl.append(li);
+  }
+}
+
 function showResult(res: ApplyResponse): void {
   if (!res.ok) {
-    statusEl.textContent = `Error: ${res.error ?? "unknown"}`;
+    statusEl.textContent = t("errorPrefix", res.error ?? "unknown");
     return;
   }
   const sum = res.summary;
   statusEl.textContent = sum
-    ? `Applied: +${sum.rulesAdded} −${sum.rulesRemoved} rules` +
-      (sum.unavailable.length ? ` · unavailable: ${sum.unavailable.join(",")}` : "")
-    : "Applied";
+    ? t("appliedDiff", [String(sum.rulesAdded), String(sum.rulesRemoved)]) +
+      (sum.unavailable.length
+        ? ` · ${t("unavailablePrefix", sum.unavailable.join(","))}`
+        : "")
+    : t("appliedPlain");
 }
 
 let state: StateResponse | null = null;
@@ -167,4 +220,5 @@ importBtn.addEventListener("click", async () => {
   await refresh();
 });
 
+localizePage();
 void refresh();

@@ -50,7 +50,7 @@ export const PROFILE_TEMPLATES: Record<
   }
 };
 
-/** Rulesets predefinidos disponibles (metadata para la UI). */
-export const AVAILABLE_RULESETS: readonly { id: string; label: string }[] = [
-  { id: "predefined", label: "Conservative blocklist" }
+/** Rulesets predefinidos disponibles (metadata para la UI, labels vía i18n). */
+export const AVAILABLE_RULESETS: readonly { id: string; labelKey: string }[] = [
+  { id: "predefined", labelKey: "rulesetPredefined" }
 ];

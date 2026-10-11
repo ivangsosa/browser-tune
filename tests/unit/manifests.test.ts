@@ -11,7 +11,8 @@ describe("manifiestos", () => {
         readFileSync(resolve(ROOT, "manifests", `${target}.json`), "utf8")
       );
       expect(manifest.manifest_version).toBe(3);
-      expect(manifest.name).toBe("browser-tune");
+      expect(manifest.name).toBe("__MSG_appTitle__");
+      expect(manifest.default_locale).toBe("en");
       expect(manifest.permissions).toContain("storage");
       expect(manifest.permissions).toContain("declarativeNetRequest");
       expect(manifest.permissions).not.toContain("<all_urls>");

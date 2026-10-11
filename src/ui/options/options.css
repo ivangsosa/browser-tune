@@ -63,3 +63,16 @@ button {
   padding: 6px 14px;
   cursor: pointer;
 }
+
+.tip-action {
+  padding: 1px 8px;
+  font-size: 11px;
+}
+
+#browser-tips code {
+  font-size: 11px;
+  background: #f0f0f0;
+  padding: 1px 4px;
+  border-radius: 3px;
+  user-select: all;
+}
