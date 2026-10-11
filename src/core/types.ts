@@ -1,5 +1,18 @@
 export type ProfileId = "balanced" | "low-resource" | "privacy" | "custom";
 
+/** Tipos de recurso bloqueables en reglas del usuario (main_frame se excluye siempre). */
+export type ResourceType =
+  | "script"
+  | "image"
+  | "sub_frame"
+  | "xmlhttprequest"
+  | "media"
+  | "font"
+  | "stylesheet"
+  | "ping"
+  | "websocket"
+  | "other";
+
 export interface BlockingSettings {
   enabled: boolean;
   /** IDs de rulesets estáticos predefinidos activos. */
@@ -8,6 +21,8 @@ export interface BlockingSettings {
   blockedDomains: string[];
   /** Dominios excluidos del bloqueo -> reglas allow (preceden a block por la API). */
   excludedDomains: string[];
+  /** Si no está vacío, las reglas del usuario bloquean solo estos tipos de recurso. */
+  resourceTypes: ResourceType[];
 }
 
 export interface TabDiscardSettings {
@@ -29,4 +44,11 @@ export interface ExtensionSettings {
 export interface ProfileTemplate {
   blocking: BlockingSettings;
   tabDiscard: TabDiscardSettings;
+}
+
+/** Pausa temporal del bloqueo para un sitio (se aplica con session rules). */
+export interface PauseEntry {
+  domain: string;
+  /** Epoch ms en que expira la pausa. */
+  until: number;
 }

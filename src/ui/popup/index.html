@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="color-scheme" content="light dark" />
     <link rel="stylesheet" href="popup.css" />
     <title data-i18n="appTitle">browser-tune</title>
   </head>
@@ -28,8 +29,40 @@
       <span data-i18n="discardInactiveTabs">Discard inactive tabs</span>
     </label>
 
-    <p id="status" class="status"></p>
+    <section id="site" class="site" hidden aria-labelledby="site-title">
+      <h2 id="site-title" data-i18n="thisSite">This site</h2>
+      <p id="site-host" class="host"></p>
+      <div class="actions">
+        <button id="exclude-blocking" type="button" data-i18n="excludeFromBlocking">Don't block this site</button>
+        <button id="exclude-discard" type="button" data-i18n="neverDiscardSite">Never discard this site</button>
+      </div>
+      <div id="pause-controls" class="row">
+        <label for="pause-minutes" class="visually-hidden" data-i18n="pauseDuration">Pause duration</label>
+        <select id="pause-minutes">
+          <option value="15" data-i18n="pause15">15 minutes</option>
+          <option value="60" data-i18n="pause60" selected>1 hour</option>
+          <option value="240" data-i18n="pause240">4 hours</option>
+        </select>
+        <button id="pause" type="button" data-i18n="pauseBlocking">Pause blocking here</button>
+      </div>
+      <div id="resume-controls" class="row" hidden>
+        <span id="paused-info"></span>
+        <button id="resume" type="button" data-i18n="resumeBlocking">Resume</button>
+      </div>
+    </section>
+
+    <section class="discard-box" aria-labelledby="tabs-title">
+      <h2 id="tabs-title" data-i18n="tabsTitle">Tabs</h2>
+      <p id="discarded-count"></p>
+      <button id="discard-now" type="button" data-i18n="discardNow">Discard inactive tabs now</button>
+    </section>
+
+    <p id="status" class="status" role="status" aria-live="polite"></p>
     <p id="warnings" class="warnings"></p>
+    <div id="error-box" class="error" role="alert" hidden>
+      <span id="error-text"></span>
+      <button id="retry" type="button" data-i18n="retryButton">Retry</button>
+    </div>
 
     <button id="open-options" type="button" data-i18n="optionsButton">Options</button>
 

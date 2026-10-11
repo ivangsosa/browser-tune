@@ -9,7 +9,8 @@ function sameBlocking(
     a.enabled === b.enabled &&
     a.enabledRulesets.join(",") === b.enabledRulesets.join(",") &&
     a.blockedDomains.join(",") === b.blockedDomains.join(",") &&
-    a.excludedDomains.join(",") === b.excludedDomains.join(",")
+    a.excludedDomains.join(",") === b.excludedDomains.join(",") &&
+    a.resourceTypes.join(",") === b.resourceTypes.join(",")
   );
 }
 

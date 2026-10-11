@@ -1,0 +1,309 @@
+{
+  "appDesc": {
+    "message": "Leistungs- und Speicherprofile, Domain-Blockierung und sicheres Verwerfen von Tabs. Alles lokal, ohne Telemetrie."
+  },
+  "appTitle": {
+    "message": "browser-tune"
+  },
+  "optionsTitle": {
+    "message": "browser-tune — Optionen"
+  },
+  "profileLabel": {
+    "message": "Profil"
+  },
+  "profileBalanced": {
+    "message": "Ausgewogen"
+  },
+  "profileLowResource": {
+    "message": "Ressourcensparend"
+  },
+  "profilePrivacy": {
+    "message": "Datenschutz"
+  },
+  "profileCustom": {
+    "message": "Benutzerdefiniert"
+  },
+  "domainBlocking": {
+    "message": "Domain-Blockierung"
+  },
+  "discardInactiveTabs": {
+    "message": "Inaktive Tabs verwerfen"
+  },
+  "optionsButton": {
+    "message": "Optionen"
+  },
+  "activeRules": {
+    "message": "Aktive Regeln: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "appliedDiff": {
+    "message": "Angewendet: +$added$ −$removed$ Regeln",
+    "placeholders": {
+      "added": {
+        "content": "$1"
+      },
+      "removed": {
+        "content": "$2"
+      }
+    }
+  },
+  "appliedPlain": {
+    "message": "Angewendet"
+  },
+  "errorPrefix": {
+    "message": "Fehler: $detail$",
+    "placeholders": {
+      "detail": {
+        "content": "$1"
+      }
+    }
+  },
+  "unavailableDnr": {
+    "message": "Domain-Blockierung nicht verfügbar"
+  },
+  "unavailableDiscard": {
+    "message": "Verwerfen von Tabs nicht verfügbar"
+  },
+  "unavailablePrefix": {
+    "message": "Nicht verfügbar: $items$",
+    "placeholders": {
+      "items": {
+        "content": "$1"
+      }
+    }
+  },
+  "profileHint": {
+    "message": "Ein Profil zu übernehmen ersetzt die Einstellungen unten. Jede manuelle Änderung wechselt zu Benutzerdefiniert."
+  },
+  "enabledLabel": {
+    "message": "Aktiviert"
+  },
+  "blockedDomainsLabel": {
+    "message": "Blockierte Domains (eine pro Zeile, max. 5000)"
+  },
+  "excludedBlockingLabel": {
+    "message": "Von der Blockierung ausgenommen (eine pro Zeile)"
+  },
+  "sectionDiscard": {
+    "message": "Tabs verwerfen"
+  },
+  "discardBefore": {
+    "message": "Verwerfen nach"
+  },
+  "discardAfter": {
+    "message": "Minuten Inaktivität"
+  },
+  "discardExcludedLabel": {
+    "message": "Tabs dieser Domains nie verwerfen (eine pro Zeile)"
+  },
+  "discardHint": {
+    "message": "Ein verworfener Tab wird beim Auswählen neu geladen und kann nicht gespeicherte Formulardaten verlieren."
+  },
+  "sectionBrowserSettings": {
+    "message": "Browser-Einstellungen"
+  },
+  "browserSettingsHint": {
+    "message": "Erweiterungen können Browser-Einstellungen nicht ändern — übernehmen Sie diese bei Bedarf manuell."
+  },
+  "sectionBackup": {
+    "message": "Sicherung"
+  },
+  "exportButton": {
+    "message": "Einstellungen exportieren"
+  },
+  "importLabel": {
+    "message": "Einstellungen importieren (JSON)"
+  },
+  "importButton": {
+    "message": "Importieren und anwenden"
+  },
+  "saveButton": {
+    "message": "Speichern und anwenden"
+  },
+  "tipChromiumMemorySaver": {
+    "message": "Speicherspar-Modus aktivieren (Einstellungen → Leistung)."
+  },
+  "tipChromiumPreload": {
+    "message": "Seiten-Vorabladen deaktivieren, um weniger Speicher zu nutzen (Einstellungen → Leistung)."
+  },
+  "tipChromiumShields": {
+    "message": "Nur Brave: Shields blockiert bereits Werbung und Tracker — zusätzliche Listen bringen wenig."
+  },
+  "tipFirefoxUnload": {
+    "message": "Lassen Sie in about:config browser.tabs.unloadOnLowMemory auf true — automatisches Entladen von Tabs bei wenig Speicher."
+  },
+  "tipFirefoxEtp": {
+    "message": "Lassen Sie den Verbesserten Schutz vor Aktivitätenverfolgung aktiviert (about:preferences#privacy)."
+  },
+  "rulesetPredefined": {
+    "message": "Konservative Blockliste"
+  },
+  "openSettings": {
+    "message": "Einstellungen öffnen"
+  },
+  "learnMore": {
+    "message": "Mehr erfahren"
+  },
+  "languageLabel": {
+    "message": "Sprache"
+  },
+  "languageAuto": {
+    "message": "Browser-Standard"
+  },
+  "rulesetTracking": {
+    "message": "Erweiterte Tracker- und Werbeliste (strenger, kann einige Seiten beeinträchtigen)"
+  },
+  "resourceTypesLabel": {
+    "message": "Nur diese Ressourcentypen blockieren"
+  },
+  "resourceTypesHint": {
+    "message": "Alles abgewählt lassen, um alles außer der Seite selbst zu blockieren."
+  },
+  "resType_script": {
+    "message": "Skripte"
+  },
+  "resType_image": {
+    "message": "Bilder"
+  },
+  "resType_sub_frame": {
+    "message": "Eingebettete Frames"
+  },
+  "resType_xmlhttprequest": {
+    "message": "Hintergrundanfragen"
+  },
+  "resType_media": {
+    "message": "Audio/Video"
+  },
+  "resType_font": {
+    "message": "Schriftarten"
+  },
+  "resType_stylesheet": {
+    "message": "Stylesheets"
+  },
+  "resType_ping": {
+    "message": "Pings"
+  },
+  "resType_websocket": {
+    "message": "WebSockets"
+  },
+  "resType_other": {
+    "message": "Sonstige"
+  },
+  "domainsUsed": {
+    "message": "$used$ von $max$ Domains verwendet",
+    "placeholders": {
+      "used": {
+        "content": "$1"
+      },
+      "max": {
+        "content": "$2"
+      }
+    }
+  },
+  "domainsCount": {
+    "message": "$count$ Domains",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "domainsOverLimit": {
+    "message": "Nur die ersten $max$ werden angewendet.",
+    "placeholders": {
+      "max": {
+        "content": "$1"
+      }
+    }
+  },
+  "invalidLines": {
+    "message": "$count$ ungültige Zeilen werden ignoriert: $items$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "items": {
+        "content": "$2"
+      }
+    }
+  },
+  "unsavedChanges": {
+    "message": "Sie haben nicht gespeicherte Änderungen."
+  },
+  "revertButton": {
+    "message": "Änderungen verwerfen"
+  },
+  "retryButton": {
+    "message": "Erneut versuchen"
+  },
+  "downloadButton": {
+    "message": "Datei herunterladen"
+  },
+  "importFileButton": {
+    "message": "Aus Datei importieren"
+  },
+  "exportLabel": {
+    "message": "Exportierte Einstellungen"
+  },
+  "thisSite": {
+    "message": "Diese Seite"
+  },
+  "excludeFromBlocking": {
+    "message": "Diese Seite nicht blockieren"
+  },
+  "neverDiscardSite": {
+    "message": "Diese Seite nie verwerfen"
+  },
+  "pauseDuration": {
+    "message": "Pausendauer"
+  },
+  "pause15": {
+    "message": "15 Minuten"
+  },
+  "pause60": {
+    "message": "1 Stunde"
+  },
+  "pause240": {
+    "message": "4 Stunden"
+  },
+  "pauseBlocking": {
+    "message": "Blockierung hier pausieren"
+  },
+  "resumeBlocking": {
+    "message": "Fortsetzen"
+  },
+  "pausedUntil": {
+    "message": "Blockierung pausiert bis $time$",
+    "placeholders": {
+      "time": {
+        "content": "$1"
+      }
+    }
+  },
+  "tabsTitle": {
+    "message": "Tabs"
+  },
+  "discardedTabs": {
+    "message": "Verworfene Tabs: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "discardNow": {
+    "message": "Inaktive Tabs jetzt verwerfen"
+  },
+  "discardedNow": {
+    "message": "$count$ Tabs verworfen",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  }
+}

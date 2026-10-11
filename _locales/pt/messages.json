@@ -35,14 +35,20 @@
   "activeRules": {
     "message": "Regras ativas: $count$",
     "placeholders": {
-      "count": { "content": "$1" }
+      "count": {
+        "content": "$1"
+      }
     }
   },
   "appliedDiff": {
     "message": "Aplicado: +$added$ −$removed$ regras",
     "placeholders": {
-      "added": { "content": "$1" },
-      "removed": { "content": "$2" }
+      "added": {
+        "content": "$1"
+      },
+      "removed": {
+        "content": "$2"
+      }
     }
   },
   "appliedPlain": {
@@ -51,7 +57,9 @@
   "errorPrefix": {
     "message": "Erro: $detail$",
     "placeholders": {
-      "detail": { "content": "$1" }
+      "detail": {
+        "content": "$1"
+      }
     }
   },
   "unavailableDnr": {
@@ -63,7 +71,9 @@
   "unavailablePrefix": {
     "message": "Indisponível: $items$",
     "placeholders": {
-      "items": { "content": "$1" }
+      "items": {
+        "content": "$1"
+      }
     }
   },
   "profileHint": {
@@ -137,5 +147,163 @@
   },
   "learnMore": {
     "message": "Saiba mais"
+  },
+  "languageLabel": {
+    "message": "Idioma"
+  },
+  "languageAuto": {
+    "message": "Padrão do navegador"
+  },
+  "rulesetTracking": {
+    "message": "Lista ampliada de rastreadores e anúncios (mais rígida, pode quebrar alguns sites)"
+  },
+  "resourceTypesLabel": {
+    "message": "Bloquear apenas estes tipos de recurso"
+  },
+  "resourceTypesHint": {
+    "message": "Deixe tudo desmarcado para bloquear tudo, exceto a própria página."
+  },
+  "resType_script": {
+    "message": "Scripts"
+  },
+  "resType_image": {
+    "message": "Imagens"
+  },
+  "resType_sub_frame": {
+    "message": "Quadros incorporados"
+  },
+  "resType_xmlhttprequest": {
+    "message": "Solicitações em segundo plano"
+  },
+  "resType_media": {
+    "message": "Áudio/vídeo"
+  },
+  "resType_font": {
+    "message": "Fontes"
+  },
+  "resType_stylesheet": {
+    "message": "Folhas de estilo"
+  },
+  "resType_ping": {
+    "message": "Pings"
+  },
+  "resType_websocket": {
+    "message": "WebSockets"
+  },
+  "resType_other": {
+    "message": "Outros"
+  },
+  "domainsUsed": {
+    "message": "$used$ de $max$ domínios usados",
+    "placeholders": {
+      "used": {
+        "content": "$1"
+      },
+      "max": {
+        "content": "$2"
+      }
+    }
+  },
+  "domainsCount": {
+    "message": "$count$ domínios",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "domainsOverLimit": {
+    "message": "Apenas os primeiros $max$ serão aplicados.",
+    "placeholders": {
+      "max": {
+        "content": "$1"
+      }
+    }
+  },
+  "invalidLines": {
+    "message": "$count$ linhas inválidas serão ignoradas: $items$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "items": {
+        "content": "$2"
+      }
+    }
+  },
+  "unsavedChanges": {
+    "message": "Você tem alterações não salvas."
+  },
+  "revertButton": {
+    "message": "Descartar alterações"
+  },
+  "retryButton": {
+    "message": "Tentar novamente"
+  },
+  "downloadButton": {
+    "message": "Baixar arquivo"
+  },
+  "importFileButton": {
+    "message": "Importar de arquivo"
+  },
+  "exportLabel": {
+    "message": "Configurações exportadas"
+  },
+  "thisSite": {
+    "message": "Este site"
+  },
+  "excludeFromBlocking": {
+    "message": "Não bloquear este site"
+  },
+  "neverDiscardSite": {
+    "message": "Nunca descartar este site"
+  },
+  "pauseDuration": {
+    "message": "Duração da pausa"
+  },
+  "pause15": {
+    "message": "15 minutos"
+  },
+  "pause60": {
+    "message": "1 hora"
+  },
+  "pause240": {
+    "message": "4 horas"
+  },
+  "pauseBlocking": {
+    "message": "Pausar bloqueio aqui"
+  },
+  "resumeBlocking": {
+    "message": "Retomar"
+  },
+  "pausedUntil": {
+    "message": "Bloqueio pausado até $time$",
+    "placeholders": {
+      "time": {
+        "content": "$1"
+      }
+    }
+  },
+  "tabsTitle": {
+    "message": "Abas"
+  },
+  "discardedTabs": {
+    "message": "Abas descartadas: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "discardNow": {
+    "message": "Descartar abas inativas agora"
+  },
+  "discardedNow": {
+    "message": "$count$ abas descartadas",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
   }
 }

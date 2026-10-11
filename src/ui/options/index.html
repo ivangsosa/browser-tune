@@ -2,35 +2,48 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="color-scheme" content="light dark" />
     <link rel="stylesheet" href="options.css" />
     <title data-i18n="optionsTitle">browser-tune — Options</title>
   </head>
   <body>
     <h1 data-i18n="optionsTitle">browser-tune — Options</h1>
 
-    <section>
-      <h2 data-i18n="profileLabel">Profile</h2>
-      <select id="profile">
+    <section aria-labelledby="h-language">
+      <h2 id="h-language" data-i18n="languageLabel">Language</h2>
+      <select id="language" aria-labelledby="h-language"></select>
+    </section>
+
+    <section aria-labelledby="h-profile">
+      <h2 id="h-profile" data-i18n="profileLabel">Profile</h2>
+      <select id="profile" aria-labelledby="h-profile" aria-describedby="profile-hint">
         <option value="balanced" data-i18n="profileBalanced">Balanced</option>
         <option value="low-resource" data-i18n="profileLowResource">Low Resource</option>
         <option value="privacy" data-i18n="profilePrivacy">Privacy</option>
         <option value="custom" data-i18n="profileCustom">Custom</option>
       </select>
-      <p class="hint" data-i18n="profileHint">Applying a profile replaces the settings below. Any manual change switches to Custom.</p>
+      <p id="profile-hint" class="hint" data-i18n="profileHint">Applying a profile replaces the settings below. Any manual change switches to Custom.</p>
     </section>
 
-    <section>
-      <h2 data-i18n="domainBlocking">Domain blocking</h2>
+    <section aria-labelledby="h-blocking">
+      <h2 id="h-blocking" data-i18n="domainBlocking">Domain blocking</h2>
       <label><input type="checkbox" id="blocking-enabled" /> <span data-i18n="enabledLabel">Enabled</span></label>
       <fieldset id="rulesets"></fieldset>
       <label for="blocked-domains" data-i18n="blockedDomainsLabel">Blocked domains (one per line, max 5000)</label>
-      <textarea id="blocked-domains" rows="6"></textarea>
+      <textarea id="blocked-domains" rows="6" aria-describedby="blocked-info"></textarea>
+      <p id="blocked-info" class="info" aria-live="polite"></p>
+      <fieldset aria-describedby="types-hint">
+        <legend data-i18n="resourceTypesLabel">Block only these resource types</legend>
+        <div id="resource-types" class="types"></div>
+        <p id="types-hint" class="hint" data-i18n="resourceTypesHint">Leave all unchecked to block everything except the page itself.</p>
+      </fieldset>
       <label for="excluded-domains" data-i18n="excludedBlockingLabel">Excluded from blocking (one per line)</label>
-      <textarea id="excluded-domains" rows="4"></textarea>
+      <textarea id="excluded-domains" rows="4" aria-describedby="excluded-info"></textarea>
+      <p id="excluded-info" class="info" aria-live="polite"></p>
     </section>
 
-    <section>
-      <h2 data-i18n="sectionDiscard">Tab discarding</h2>
+    <section aria-labelledby="h-discard">
+      <h2 id="h-discard" data-i18n="sectionDiscard">Tab discarding</h2>
       <label><input type="checkbox" id="discard-enabled" /> <span data-i18n="enabledLabel">Enabled</span></label>
       <label for="inactive-minutes">
         <span data-i18n="discardBefore">Discard after</span>
@@ -38,28 +51,45 @@
         <span data-i18n="discardAfter">minutes inactive</span>
       </label>
       <label for="discard-excluded" data-i18n="discardExcludedLabel">Never discard tabs from (one per line)</label>
-      <textarea id="discard-excluded" rows="4"></textarea>
+      <textarea id="discard-excluded" rows="4" aria-describedby="discard-info"></textarea>
+      <p id="discard-info" class="info" aria-live="polite"></p>
       <p class="hint" data-i18n="discardHint">A discarded tab reloads when you select it and may lose unsaved form state.</p>
     </section>
 
-    <section>
-      <h2 data-i18n="sectionBrowserSettings">Browser settings</h2>
+    <section aria-labelledby="h-browser">
+      <h2 id="h-browser" data-i18n="sectionBrowserSettings">Browser settings</h2>
       <p class="hint" data-i18n="browserSettingsHint">
         Extensions cannot change browser settings — apply these manually if you want them.
       </p>
       <ul id="browser-tips"></ul>
     </section>
 
-    <section>
-      <h2 data-i18n="sectionBackup">Backup</h2>
-      <button id="export" type="button" data-i18n="exportButton">Export settings</button>
+    <section aria-labelledby="h-backup">
+      <h2 id="h-backup" data-i18n="sectionBackup">Backup</h2>
+      <div class="actions">
+        <button id="export" type="button" data-i18n="exportButton">Export settings</button>
+        <button id="download" type="button" data-i18n="downloadButton">Download file</button>
+        <label class="file-button">
+          <span data-i18n="importFileButton">Import from file</span>
+          <input id="import-file" type="file" accept="application/json,.json" class="visually-hidden" />
+        </label>
+      </div>
+      <label for="export-json" class="visually-hidden" data-i18n="exportLabel">Exported settings</label>
       <textarea id="export-json" rows="6" readonly></textarea>
       <label for="import-json" data-i18n="importLabel">Import settings (JSON)</label>
       <textarea id="import-json" rows="6"></textarea>
       <button id="import" type="button" data-i18n="importButton">Import and apply</button>
     </section>
 
-    <p id="status" class="status"></p>
+    <p id="unsaved" class="unsaved" role="status" aria-live="polite" hidden>
+      <span data-i18n="unsavedChanges">You have unsaved changes.</span>
+      <button id="revert" type="button" data-i18n="revertButton">Discard changes</button>
+    </p>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+    <div id="error-box" class="error" role="alert" hidden>
+      <span id="error-text"></span>
+      <button id="retry" type="button" data-i18n="retryButton">Retry</button>
+    </div>
     <button id="save" type="button" data-i18n="saveButton">Save and apply</button>
 
     <script src="options.js"></script>

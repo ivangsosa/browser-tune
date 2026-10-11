@@ -26,6 +26,11 @@
         "id": "predefined",
         "enabled": true,
         "path": "rulesets/predefined.json"
+      },
+      {
+        "id": "tracking",
+        "enabled": false,
+        "path": "rulesets/tracking.json"
       }
     ]
   },

@@ -35,14 +35,20 @@
   "activeRules": {
     "message": "Active rules: $count$",
     "placeholders": {
-      "count": { "content": "$1" }
+      "count": {
+        "content": "$1"
+      }
     }
   },
   "appliedDiff": {
     "message": "Applied: +$added$ −$removed$ rules",
     "placeholders": {
-      "added": { "content": "$1" },
-      "removed": { "content": "$2" }
+      "added": {
+        "content": "$1"
+      },
+      "removed": {
+        "content": "$2"
+      }
     }
   },
   "appliedPlain": {
@@ -51,7 +57,9 @@
   "errorPrefix": {
     "message": "Error: $detail$",
     "placeholders": {
-      "detail": { "content": "$1" }
+      "detail": {
+        "content": "$1"
+      }
     }
   },
   "unavailableDnr": {
@@ -63,7 +71,9 @@
   "unavailablePrefix": {
     "message": "Unavailable: $items$",
     "placeholders": {
-      "items": { "content": "$1" }
+      "items": {
+        "content": "$1"
+      }
     }
   },
   "profileHint": {
@@ -137,5 +147,163 @@
   },
   "learnMore": {
     "message": "Learn more"
+  },
+  "languageLabel": {
+    "message": "Language"
+  },
+  "languageAuto": {
+    "message": "Browser default"
+  },
+  "rulesetTracking": {
+    "message": "Extended trackers and ads list (stricter, may break some sites)"
+  },
+  "resourceTypesLabel": {
+    "message": "Block only these resource types"
+  },
+  "resourceTypesHint": {
+    "message": "Leave all unchecked to block everything except the page itself."
+  },
+  "resType_script": {
+    "message": "Scripts"
+  },
+  "resType_image": {
+    "message": "Images"
+  },
+  "resType_sub_frame": {
+    "message": "Embedded frames"
+  },
+  "resType_xmlhttprequest": {
+    "message": "Background requests"
+  },
+  "resType_media": {
+    "message": "Audio/video"
+  },
+  "resType_font": {
+    "message": "Fonts"
+  },
+  "resType_stylesheet": {
+    "message": "Stylesheets"
+  },
+  "resType_ping": {
+    "message": "Pings"
+  },
+  "resType_websocket": {
+    "message": "WebSockets"
+  },
+  "resType_other": {
+    "message": "Other"
+  },
+  "domainsUsed": {
+    "message": "$used$ of $max$ domains used",
+    "placeholders": {
+      "used": {
+        "content": "$1"
+      },
+      "max": {
+        "content": "$2"
+      }
+    }
+  },
+  "domainsCount": {
+    "message": "$count$ domains",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "domainsOverLimit": {
+    "message": "Only the first $max$ will be applied.",
+    "placeholders": {
+      "max": {
+        "content": "$1"
+      }
+    }
+  },
+  "invalidLines": {
+    "message": "$count$ invalid lines will be ignored: $items$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "items": {
+        "content": "$2"
+      }
+    }
+  },
+  "unsavedChanges": {
+    "message": "You have unsaved changes."
+  },
+  "revertButton": {
+    "message": "Discard changes"
+  },
+  "retryButton": {
+    "message": "Retry"
+  },
+  "downloadButton": {
+    "message": "Download file"
+  },
+  "importFileButton": {
+    "message": "Import from file"
+  },
+  "exportLabel": {
+    "message": "Exported settings"
+  },
+  "thisSite": {
+    "message": "This site"
+  },
+  "excludeFromBlocking": {
+    "message": "Don't block this site"
+  },
+  "neverDiscardSite": {
+    "message": "Never discard this site"
+  },
+  "pauseDuration": {
+    "message": "Pause duration"
+  },
+  "pause15": {
+    "message": "15 minutes"
+  },
+  "pause60": {
+    "message": "1 hour"
+  },
+  "pause240": {
+    "message": "4 hours"
+  },
+  "pauseBlocking": {
+    "message": "Pause blocking here"
+  },
+  "resumeBlocking": {
+    "message": "Resume"
+  },
+  "pausedUntil": {
+    "message": "Blocking paused until $time$",
+    "placeholders": {
+      "time": {
+        "content": "$1"
+      }
+    }
+  },
+  "tabsTitle": {
+    "message": "Tabs"
+  },
+  "discardedTabs": {
+    "message": "Discarded tabs: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "discardNow": {
+    "message": "Discard inactive tabs now"
+  },
+  "discardedNow": {
+    "message": "Discarded $count$ tabs",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
   }
 }

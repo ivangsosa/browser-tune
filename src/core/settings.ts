@@ -4,7 +4,11 @@ import type {
   ProfileId,
   TabDiscardSettings
 } from "./types";
-import { isValidInactiveMinutes, normalizeDomainList } from "./validation";
+import {
+  isValidInactiveMinutes,
+  normalizeDomainList,
+  normalizeResourceTypes
+} from "./validation";
 
 export const SETTINGS_KEY = "settings";
 export const MAX_BLOCKED_DOMAINS = 5000;
@@ -22,7 +26,8 @@ export const DEFAULT_SETTINGS: ExtensionSettings = {
     enabled: true,
     enabledRulesets: ["predefined"],
     blockedDomains: [],
-    excludedDomains: []
+    excludedDomains: [],
+    resourceTypes: []
   },
   tabDiscard: {
     enabled: false,
@@ -54,7 +59,8 @@ function sanitizeBlocking(
     enabled: typeof r.enabled === "boolean" ? r.enabled : defaults.enabled,
     enabledRulesets: toRulesetList(r.enabledRulesets, defaults.enabledRulesets),
     blockedDomains: toDomainList(r.blockedDomains).slice(0, MAX_BLOCKED_DOMAINS),
-    excludedDomains: toDomainList(r.excludedDomains)
+    excludedDomains: toDomainList(r.excludedDomains),
+    resourceTypes: normalizeResourceTypes(r.resourceTypes)
   };
 }
 

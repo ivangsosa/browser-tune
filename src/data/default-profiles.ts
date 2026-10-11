@@ -14,7 +14,8 @@ export const PROFILE_TEMPLATES: Record<
       enabled: true,
       enabledRulesets: ["predefined"],
       blockedDomains: [],
-      excludedDomains: []
+      excludedDomains: [],
+      resourceTypes: []
     },
     tabDiscard: {
       enabled: false,
@@ -27,7 +28,8 @@ export const PROFILE_TEMPLATES: Record<
       enabled: true,
       enabledRulesets: ["predefined"],
       blockedDomains: [],
-      excludedDomains: []
+      excludedDomains: [],
+      resourceTypes: []
     },
     tabDiscard: {
       enabled: true,
@@ -38,9 +40,10 @@ export const PROFILE_TEMPLATES: Record<
   privacy: {
     blocking: {
       enabled: true,
-      enabledRulesets: ["predefined"],
+      enabledRulesets: ["predefined", "tracking"],
       blockedDomains: [],
-      excludedDomains: []
+      excludedDomains: [],
+      resourceTypes: []
     },
     tabDiscard: {
       enabled: false,
@@ -52,5 +55,6 @@ export const PROFILE_TEMPLATES: Record<
 
 /** Rulesets predefinidos disponibles (metadata para la UI, labels vía i18n). */
 export const AVAILABLE_RULESETS: readonly { id: string; labelKey: string }[] = [
-  { id: "predefined", labelKey: "rulesetPredefined" }
+  { id: "predefined", labelKey: "rulesetPredefined" },
+  { id: "tracking", labelKey: "rulesetTracking" }
 ];

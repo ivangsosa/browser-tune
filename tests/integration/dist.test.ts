@@ -25,9 +25,10 @@ describe.skipIf(!DIST_EXISTS)("paquetes dist/", () => {
         "options.html",
         "options.js",
         "rulesets/predefined.json",
-        "_locales/en/messages.json",
-        "_locales/es/messages.json",
-        "_locales/pt/messages.json"
+        "rulesets/tracking.json",
+        ...["en", "es", "pt", "fr", "de"].map(
+          (l) => `_locales/${l}/messages.json`
+        )
       ]) {
         expect(existsSync(resolve(dir, f)), f).toBe(true);
       }
@@ -46,18 +47,25 @@ describe.skipIf(!DIST_EXISTS)("paquetes dist/", () => {
       }
     });
 
-    it(`${target}: ruleset estático con schema DNR válido`, () => {
-      const rules = JSON.parse(
-        readFileSync(resolve(dir, "rulesets/predefined.json"), "utf8")
-      );
+    it(`${target}: rulesets estáticos con schema DNR válido`, () => {
+      const resources: { id: string; enabled: boolean; path: string }[] =
+        manifest.declarative_net_request.rule_resources;
+      // Firefox bug 1921353: al menos un ruleset estático habilitado.
+      expect(resources.some((r) => r.enabled)).toBe(true);
       const ACTIONS = ["block", "allow", "allowAllRequests", "upgradeScheme"];
-      for (const rule of rules) {
-        expect(rule.id).toBeGreaterThan(0);
-        expect(ACTIONS).toContain(rule.action.type);
-        expect(Array.isArray(rule.condition.requestDomains)).toBe(true);
-        // Sin regex: solo dominios declarativos.
-        expect(rule.condition.urlFilter).toBeUndefined();
-        expect(rule.condition.regexFilter).toBeUndefined();
+      for (const res of resources) {
+        const rules = JSON.parse(readFileSync(resolve(dir, res.path), "utf8"));
+        const ids = new Set<number>();
+        for (const rule of rules) {
+          expect(rule.id, res.id).toBeGreaterThan(0);
+          expect(ids.has(rule.id), `${res.id}: id duplicado ${rule.id}`).toBe(false);
+          ids.add(rule.id);
+          expect(ACTIONS).toContain(rule.action.type);
+          expect(Array.isArray(rule.condition.requestDomains)).toBe(true);
+          // Sin regex: solo dominios declarativos.
+          expect(rule.condition.urlFilter).toBeUndefined();
+          expect(rule.condition.regexFilter).toBeUndefined();
+        }
       }
     });
   }

@@ -1,0 +1,309 @@
+{
+  "appDesc": {
+    "message": "Profils de performance et de mémoire, blocage de domaines et déchargement sûr des onglets. Tout en local, sans télémétrie."
+  },
+  "appTitle": {
+    "message": "browser-tune"
+  },
+  "optionsTitle": {
+    "message": "browser-tune — Options"
+  },
+  "profileLabel": {
+    "message": "Profil"
+  },
+  "profileBalanced": {
+    "message": "Équilibré"
+  },
+  "profileLowResource": {
+    "message": "Économie de ressources"
+  },
+  "profilePrivacy": {
+    "message": "Confidentialité"
+  },
+  "profileCustom": {
+    "message": "Personnalisé"
+  },
+  "domainBlocking": {
+    "message": "Blocage de domaines"
+  },
+  "discardInactiveTabs": {
+    "message": "Décharger les onglets inactifs"
+  },
+  "optionsButton": {
+    "message": "Options"
+  },
+  "activeRules": {
+    "message": "Règles actives : $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "appliedDiff": {
+    "message": "Appliqué : +$added$ −$removed$ règles",
+    "placeholders": {
+      "added": {
+        "content": "$1"
+      },
+      "removed": {
+        "content": "$2"
+      }
+    }
+  },
+  "appliedPlain": {
+    "message": "Appliqué"
+  },
+  "errorPrefix": {
+    "message": "Erreur : $detail$",
+    "placeholders": {
+      "detail": {
+        "content": "$1"
+      }
+    }
+  },
+  "unavailableDnr": {
+    "message": "blocage de domaines indisponible"
+  },
+  "unavailableDiscard": {
+    "message": "déchargement d'onglets indisponible"
+  },
+  "unavailablePrefix": {
+    "message": "Indisponible : $items$",
+    "placeholders": {
+      "items": {
+        "content": "$1"
+      }
+    }
+  },
+  "profileHint": {
+    "message": "Appliquer un profil remplace les paramètres ci-dessous. Toute modification manuelle passe en Personnalisé."
+  },
+  "enabledLabel": {
+    "message": "Activé"
+  },
+  "blockedDomainsLabel": {
+    "message": "Domaines bloqués (un par ligne, max. 5000)"
+  },
+  "excludedBlockingLabel": {
+    "message": "Exclus du blocage (un par ligne)"
+  },
+  "sectionDiscard": {
+    "message": "Déchargement des onglets"
+  },
+  "discardBefore": {
+    "message": "Décharger après"
+  },
+  "discardAfter": {
+    "message": "minutes d'inactivité"
+  },
+  "discardExcludedLabel": {
+    "message": "Ne jamais décharger les onglets de (un par ligne)"
+  },
+  "discardHint": {
+    "message": "Un onglet déchargé se recharge quand vous le sélectionnez et peut perdre les données de formulaire non enregistrées."
+  },
+  "sectionBrowserSettings": {
+    "message": "Paramètres du navigateur"
+  },
+  "browserSettingsHint": {
+    "message": "Les extensions ne peuvent pas modifier les paramètres du navigateur — appliquez-les manuellement si vous le souhaitez."
+  },
+  "sectionBackup": {
+    "message": "Sauvegarde"
+  },
+  "exportButton": {
+    "message": "Exporter les paramètres"
+  },
+  "importLabel": {
+    "message": "Importer les paramètres (JSON)"
+  },
+  "importButton": {
+    "message": "Importer et appliquer"
+  },
+  "saveButton": {
+    "message": "Enregistrer et appliquer"
+  },
+  "tipChromiumMemorySaver": {
+    "message": "Activez l'économiseur de mémoire (Paramètres → Performances)."
+  },
+  "tipChromiumPreload": {
+    "message": "Désactivez le préchargement des pages pour utiliser moins de mémoire (Paramètres → Performances)."
+  },
+  "tipChromiumShields": {
+    "message": "Brave uniquement : Shields bloque déjà publicités et traqueurs — des listes supplémentaires apportent peu."
+  },
+  "tipFirefoxUnload": {
+    "message": "Dans about:config, gardez browser.tabs.unloadOnLowMemory sur true — déchargement automatique des onglets en cas de manque de mémoire."
+  },
+  "tipFirefoxEtp": {
+    "message": "Gardez la Protection renforcée contre le pistage activée (about:preferences#privacy)."
+  },
+  "rulesetPredefined": {
+    "message": "Liste de blocage conservatrice"
+  },
+  "openSettings": {
+    "message": "Ouvrir les paramètres"
+  },
+  "learnMore": {
+    "message": "En savoir plus"
+  },
+  "languageLabel": {
+    "message": "Langue"
+  },
+  "languageAuto": {
+    "message": "Par défaut du navigateur"
+  },
+  "rulesetTracking": {
+    "message": "Liste étendue de traqueurs et publicités (plus stricte, peut casser certains sites)"
+  },
+  "resourceTypesLabel": {
+    "message": "Bloquer uniquement ces types de ressources"
+  },
+  "resourceTypesHint": {
+    "message": "Laissez tout décoché pour tout bloquer sauf la page elle-même."
+  },
+  "resType_script": {
+    "message": "Scripts"
+  },
+  "resType_image": {
+    "message": "Images"
+  },
+  "resType_sub_frame": {
+    "message": "Cadres intégrés"
+  },
+  "resType_xmlhttprequest": {
+    "message": "Requêtes en arrière-plan"
+  },
+  "resType_media": {
+    "message": "Audio/vidéo"
+  },
+  "resType_font": {
+    "message": "Polices"
+  },
+  "resType_stylesheet": {
+    "message": "Feuilles de style"
+  },
+  "resType_ping": {
+    "message": "Pings"
+  },
+  "resType_websocket": {
+    "message": "WebSockets"
+  },
+  "resType_other": {
+    "message": "Autres"
+  },
+  "domainsUsed": {
+    "message": "$used$ domaines sur $max$ utilisés",
+    "placeholders": {
+      "used": {
+        "content": "$1"
+      },
+      "max": {
+        "content": "$2"
+      }
+    }
+  },
+  "domainsCount": {
+    "message": "$count$ domaines",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "domainsOverLimit": {
+    "message": "Seuls les $max$ premiers seront appliqués.",
+    "placeholders": {
+      "max": {
+        "content": "$1"
+      }
+    }
+  },
+  "invalidLines": {
+    "message": "$count$ lignes invalides seront ignorées : $items$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "items": {
+        "content": "$2"
+      }
+    }
+  },
+  "unsavedChanges": {
+    "message": "Vous avez des modifications non enregistrées."
+  },
+  "revertButton": {
+    "message": "Annuler les modifications"
+  },
+  "retryButton": {
+    "message": "Réessayer"
+  },
+  "downloadButton": {
+    "message": "Télécharger le fichier"
+  },
+  "importFileButton": {
+    "message": "Importer depuis un fichier"
+  },
+  "exportLabel": {
+    "message": "Paramètres exportés"
+  },
+  "thisSite": {
+    "message": "Ce site"
+  },
+  "excludeFromBlocking": {
+    "message": "Ne pas bloquer ce site"
+  },
+  "neverDiscardSite": {
+    "message": "Ne jamais décharger ce site"
+  },
+  "pauseDuration": {
+    "message": "Durée de la pause"
+  },
+  "pause15": {
+    "message": "15 minutes"
+  },
+  "pause60": {
+    "message": "1 heure"
+  },
+  "pause240": {
+    "message": "4 heures"
+  },
+  "pauseBlocking": {
+    "message": "Suspendre le blocage ici"
+  },
+  "resumeBlocking": {
+    "message": "Reprendre"
+  },
+  "pausedUntil": {
+    "message": "Blocage suspendu jusqu'à $time$",
+    "placeholders": {
+      "time": {
+        "content": "$1"
+      }
+    }
+  },
+  "tabsTitle": {
+    "message": "Onglets"
+  },
+  "discardedTabs": {
+    "message": "Onglets déchargés : $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "discardNow": {
+    "message": "Décharger les onglets inactifs maintenant"
+  },
+  "discardedNow": {
+    "message": "$count$ onglets déchargés",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  }
+}

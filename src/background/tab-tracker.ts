@@ -54,10 +54,30 @@ export async function sweep(settings: ExtensionSettings): Promise<number> {
   if (!settings.tabDiscard.enabled) return 0;
   const caps = getCapabilities();
   if (!caps.tabDiscard || !caps.sessionStorage) return 0;
+  return discardEligible(settings, settings.tabDiscard.inactiveMinutes * 60_000);
+}
 
-  const thresholdMs = settings.tabDiscard.inactiveMinutes * 60_000;
+/**
+ * Descarte manual ("Descartar ahora"): mismas protecciones, sin esperar el
+ * umbral de inactividad y aunque la función automática esté apagada.
+ */
+export async function discardNow(settings: ExtensionSettings): Promise<number> {
+  if (!getCapabilities().tabDiscard) return 0;
+  return discardEligible(settings, 0);
+}
+
+/** Cantidad de pestañas descartadas actualmente en el navegador. */
+export async function countDiscarded(): Promise<number> {
+  if (!getCapabilities().tabDiscard) return 0;
+  return (await chrome.tabs.query({ discarded: true })).length;
+}
+
+async function discardEligible(
+  settings: ExtensionSettings,
+  thresholdMs: number
+): Promise<number> {
   const now = Date.now();
-  const activity = await getActivity();
+  const activity = getCapabilities().sessionStorage ? await getActivity() : {};
   const tabs = await chrome.tabs.query({});
   let discarded = 0;
 
@@ -65,8 +85,10 @@ export async function sweep(settings: ExtensionSettings): Promise<number> {
     const id = tab.id;
     if (id === undefined) continue;
     if (!isDiscardable(tab, settings.tabDiscard.excludedDomains)) continue;
-    const last = activity[id];
-    if (last === undefined || now - last < thresholdMs) continue;
+    if (thresholdMs > 0) {
+      const last = activity[id];
+      if (last === undefined || now - last < thresholdMs) continue;
+    }
     try {
       await chrome.tabs.discard(id);
       delete activity[id];
@@ -75,7 +97,9 @@ export async function sweep(settings: ExtensionSettings): Promise<number> {
       // El navegador rechazó el descarte (p. ej. pestaña con estado protegido).
     }
   }
-  if (discarded > 0) await setActivity(activity);
+  if (discarded > 0 && getCapabilities().sessionStorage) {
+    await setActivity(activity);
+  }
   return discarded;
 }
 

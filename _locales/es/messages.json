@@ -35,14 +35,20 @@
   "activeRules": {
     "message": "Reglas activas: $count$",
     "placeholders": {
-      "count": { "content": "$1" }
+      "count": {
+        "content": "$1"
+      }
     }
   },
   "appliedDiff": {
     "message": "Aplicado: +$added$ −$removed$ reglas",
     "placeholders": {
-      "added": { "content": "$1" },
-      "removed": { "content": "$2" }
+      "added": {
+        "content": "$1"
+      },
+      "removed": {
+        "content": "$2"
+      }
     }
   },
   "appliedPlain": {
@@ -51,7 +57,9 @@
   "errorPrefix": {
     "message": "Error: $detail$",
     "placeholders": {
-      "detail": { "content": "$1" }
+      "detail": {
+        "content": "$1"
+      }
     }
   },
   "unavailableDnr": {
@@ -63,7 +71,9 @@
   "unavailablePrefix": {
     "message": "No disponible: $items$",
     "placeholders": {
-      "items": { "content": "$1" }
+      "items": {
+        "content": "$1"
+      }
     }
   },
   "profileHint": {
@@ -137,5 +147,163 @@
   },
   "learnMore": {
     "message": "Más información"
+  },
+  "languageLabel": {
+    "message": "Idioma"
+  },
+  "languageAuto": {
+    "message": "Predeterminado del navegador"
+  },
+  "rulesetTracking": {
+    "message": "Lista ampliada de rastreadores y anuncios (más estricta, puede romper algunos sitios)"
+  },
+  "resourceTypesLabel": {
+    "message": "Bloquear solo estos tipos de recurso"
+  },
+  "resourceTypesHint": {
+    "message": "Dejá todo sin marcar para bloquear todo excepto la página en sí."
+  },
+  "resType_script": {
+    "message": "Scripts"
+  },
+  "resType_image": {
+    "message": "Imágenes"
+  },
+  "resType_sub_frame": {
+    "message": "Marcos incrustados"
+  },
+  "resType_xmlhttprequest": {
+    "message": "Solicitudes en segundo plano"
+  },
+  "resType_media": {
+    "message": "Audio/video"
+  },
+  "resType_font": {
+    "message": "Fuentes"
+  },
+  "resType_stylesheet": {
+    "message": "Hojas de estilo"
+  },
+  "resType_ping": {
+    "message": "Pings"
+  },
+  "resType_websocket": {
+    "message": "WebSockets"
+  },
+  "resType_other": {
+    "message": "Otros"
+  },
+  "domainsUsed": {
+    "message": "$used$ de $max$ dominios usados",
+    "placeholders": {
+      "used": {
+        "content": "$1"
+      },
+      "max": {
+        "content": "$2"
+      }
+    }
+  },
+  "domainsCount": {
+    "message": "$count$ dominios",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "domainsOverLimit": {
+    "message": "Solo se aplicarán los primeros $max$.",
+    "placeholders": {
+      "max": {
+        "content": "$1"
+      }
+    }
+  },
+  "invalidLines": {
+    "message": "$count$ líneas inválidas se ignorarán: $items$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "items": {
+        "content": "$2"
+      }
+    }
+  },
+  "unsavedChanges": {
+    "message": "Tenés cambios sin guardar."
+  },
+  "revertButton": {
+    "message": "Descartar cambios"
+  },
+  "retryButton": {
+    "message": "Reintentar"
+  },
+  "downloadButton": {
+    "message": "Descargar archivo"
+  },
+  "importFileButton": {
+    "message": "Importar desde archivo"
+  },
+  "exportLabel": {
+    "message": "Configuración exportada"
+  },
+  "thisSite": {
+    "message": "Este sitio"
+  },
+  "excludeFromBlocking": {
+    "message": "No bloquear este sitio"
+  },
+  "neverDiscardSite": {
+    "message": "Nunca descartar este sitio"
+  },
+  "pauseDuration": {
+    "message": "Duración de la pausa"
+  },
+  "pause15": {
+    "message": "15 minutos"
+  },
+  "pause60": {
+    "message": "1 hora"
+  },
+  "pause240": {
+    "message": "4 horas"
+  },
+  "pauseBlocking": {
+    "message": "Pausar bloqueo aquí"
+  },
+  "resumeBlocking": {
+    "message": "Reanudar"
+  },
+  "pausedUntil": {
+    "message": "Bloqueo en pausa hasta las $time$",
+    "placeholders": {
+      "time": {
+        "content": "$1"
+      }
+    }
+  },
+  "tabsTitle": {
+    "message": "Pestañas"
+  },
+  "discardedTabs": {
+    "message": "Pestañas descartadas: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "discardNow": {
+    "message": "Descartar pestañas inactivas ahora"
+  },
+  "discardedNow": {
+    "message": "Se descartaron $count$ pestañas",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
   }
 }

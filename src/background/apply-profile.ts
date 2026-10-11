@@ -5,6 +5,7 @@ import {
   applyDynamicRules,
   applyEnabledRulesets
 } from "../platform/network-rules";
+import { refreshPauses } from "./pause";
 import { ensureAlarm } from "./tab-tracker";
 
 export interface ApplySummary {
@@ -42,6 +43,8 @@ export async function applySettings(
   const applied = await applyDynamicRules(desired);
   summary.rulesAdded = applied.added;
   summary.rulesRemoved = applied.removed;
+
+  await refreshPauses();
 
   const wantedRulesets = settings.blocking.enabled
     ? settings.blocking.enabledRulesets
