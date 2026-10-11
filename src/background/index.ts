@@ -1,4 +1,8 @@
-import { applyProfileTemplate, deriveProfileId } from "../core/profiles";
+import {
+  applyProfileTemplate,
+  deriveProfileId,
+  effectiveProfileId
+} from "../core/profiles";
 import { sanitizeSettings } from "../core/settings";
 import { normalizeDomain } from "../core/validation";
 import type {
@@ -105,7 +109,7 @@ async function getState(): Promise<StateResponse> {
   const settings = await loadSettings();
   return {
     settings,
-    derivedProfile: deriveProfileId(settings),
+    derivedProfile: effectiveProfileId(settings),
     capabilities: getCapabilities(),
     managedRuleCount: getCapabilities().dnr
       ? (await getManagedDynamicRules()).length
@@ -164,7 +168,6 @@ async function handleMessage(
         msg.scope === "blocking"
           ? {
               ...s,
-              profile: "custom" as const,
               blocking: {
                 ...s.blocking,
                 excludedDomains: [...s.blocking.excludedDomains, domain]
@@ -172,13 +175,14 @@ async function handleMessage(
             }
           : {
               ...s,
-              profile: "custom" as const,
               tabDiscard: {
                 ...s.tabDiscard,
                 excludedDomains: [...s.tabDiscard.excludedDomains, domain]
               }
             };
-      return persistAndApply(sanitizeSettings(next));
+      return persistAndApply(
+        sanitizeSettings({ ...next, profile: deriveProfileId(next) })
+      );
     }
     case "pauseSite": {
       const domain = normalizeDomain(msg.domain);

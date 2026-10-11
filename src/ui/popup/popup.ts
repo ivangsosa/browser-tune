@@ -6,6 +6,7 @@ import type {
   StateResponse
 } from "../../core/messages";
 import type { ExtensionSettings, ProfileId } from "../../core/types";
+import { deriveProfileId } from "../../core/profiles";
 
 const $ = <T extends HTMLElement>(id: string) =>
   document.getElementById(id) as T;
@@ -139,12 +140,11 @@ profileEl.addEventListener("change", () => {
 
 function updateSettings(patch: Partial<ExtensionSettings>): void {
   if (!state) return;
-  const settings: ExtensionSettings = {
-    ...state.settings,
-    ...patch,
-    profile: "custom"
-  };
-  void run({ type: "saveSettings", settings });
+  const next: ExtensionSettings = { ...state.settings, ...patch };
+  void run({
+    type: "saveSettings",
+    settings: { ...next, profile: deriveProfileId(next) }
+  });
 }
 
 blockingEl.addEventListener("change", () => {

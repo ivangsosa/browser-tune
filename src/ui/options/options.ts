@@ -3,6 +3,7 @@ import { initI18n, localizePage, setLanguage, t } from "../i18n";
 import { AVAILABLE_RULESETS } from "../../data/default-profiles";
 import { AUTO_LANGUAGE, LANGUAGES } from "../../core/languages";
 import { MAX_BLOCKED_DOMAINS } from "../../core/settings";
+import { deriveProfileId } from "../../core/profiles";
 import { analyzeDomainInput, BLOCKABLE_RESOURCE_TYPES } from "../../core/validation";
 import type {
   ApplyResponse,
@@ -324,10 +325,9 @@ function collectSettings(base: ExtensionSettings): ExtensionSettings {
     [...root.querySelectorAll<HTMLInputElement>(`input[data-${attr}]`)]
       .filter((i) => i.checked)
       .map((i) => i.value);
-  return {
+  const s: ExtensionSettings = {
     ...base,
     schemaVersion: 1,
-    profile: "custom",
     blocking: {
       enabled: blockingEnabledEl.checked,
       enabledRulesets: checked(rulesetsEl, "ruleset"),
@@ -341,6 +341,7 @@ function collectSettings(base: ExtensionSettings): ExtensionSettings {
       excludedDomains: lines(discardExcludedEl)
     }
   };
+  return { ...s, profile: deriveProfileId(s) };
 }
 
 function showResult(res: ApplyResponse): void {

@@ -13,6 +13,10 @@ proyecto usa versionado semántico.
 - Lista de todos los sitios en pausa en el popup, con botón para reanudar.
 - Benchmark automatizado (`npm run bench`): mide solicitudes bloqueadas y tiempo de carga.
 
+### Fixed
+
+- Elegir el perfil "Personalizado" ahora queda seleccionado; antes el selector volvía a mostrar el perfil que coincidía con la configuración.
+
 ## [0.2.0] - 2026-10-11
 
 ### Added

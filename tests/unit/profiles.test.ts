@@ -2,7 +2,8 @@ import { describe, expect, it } from "vitest";
 import { PROFILE_TEMPLATES } from "../../src/data/default-profiles";
 import {
   applyProfileTemplate,
-  deriveProfileId
+  deriveProfileId,
+  effectiveProfileId
 } from "../../src/core/profiles";
 import { DEFAULT_SETTINGS } from "../../src/core/settings";
 import type { ExtensionSettings } from "../../src/core/types";
@@ -52,5 +53,23 @@ describe("deriveProfileId", () => {
 
   it("cualquier edición manual deriva custom", () => {
     expect(deriveProfileId(custom())).toBe("custom");
+  });
+});
+
+describe("effectiveProfileId", () => {
+  it("respeta 'custom' elegido explícitamente aunque coincida con una plantilla", () => {
+    const s = applyProfileTemplate(DEFAULT_SETTINGS, "custom");
+    expect(deriveProfileId(s)).toBe("balanced");
+    expect(effectiveProfileId(s)).toBe("custom");
+  });
+
+  it("muestra la derivación si el perfil guardado no es custom", () => {
+    const s = applyProfileTemplate(DEFAULT_SETTINGS, "privacy");
+    expect(effectiveProfileId(s)).toBe("privacy");
+  });
+
+  it("deriva custom al divergir de la plantilla elegida", () => {
+    const s = { ...custom(), profile: "balanced" as const };
+    expect(effectiveProfileId(s)).toBe("custom");
   });
 });

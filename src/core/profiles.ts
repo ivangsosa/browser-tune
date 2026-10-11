@@ -25,6 +25,16 @@ function sameTabDiscard(
   );
 }
 
+/**
+ * Perfil a mostrar en la UI. Si el usuario eligió "custom" explícitamente se
+ * respeta esa elección (aunque la config coincida con una plantilla); si no,
+ * se deriva de la configuración real.
+ */
+export function effectiveProfileId(settings: ExtensionSettings): ProfileId {
+  if (settings.profile === "custom") return "custom";
+  return deriveProfileId(settings);
+}
+
 /** Perfil que coincide exactamente con la config actual, o "custom". */
 export function deriveProfileId(settings: ExtensionSettings): ProfileId {
   for (const [id, template] of Object.entries(PROFILE_TEMPLATES)) {
