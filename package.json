@@ -1,0 +1,30 @@
+{
+  "name": "browser-tune",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Open-source Chrome + Firefox extension (MV3): performance/memory profiles, declarative domain blocking and safe tab discarding. Local-first, zero telemetry.",
+  "license": "MPL-2.0",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "build:chrome": "node scripts/build.mjs chrome",
+    "build:firefox": "node scripts/build.mjs firefox",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "webext:lint": "addons-linter dist/firefox --self-hosted",
+    "webext:run": "npx web-ext run --source-dir dist/firefox"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/chrome": "^0.3.5",
+    "@types/node": "^26.6.5",
+    "addons-linter": "^10.14.0",
+    "eslint": "^10.12.0",
+    "globals": "^17.13.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.1",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.3"
+  }
+}

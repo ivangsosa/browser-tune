@@ -1,0 +1,17 @@
+body {
+  min-width: 220px;
+  margin: 0;
+  padding: 12px;
+  font-family: system-ui, sans-serif;
+}
+
+h1 {
+  font-size: 15px;
+  margin: 0 0 8px;
+}
+
+#status {
+  font-size: 13px;
+  color: #555;
+  margin: 0;
+}
