@@ -9,7 +9,9 @@ cargar la extensión en modo desarrollador.
 
 1. Trabajar en una feature branch desde `develop` (o directo en `develop` en
    cambios chicos). Nunca commits directos a `main`.
-2. Antes de PR: `npm run lint && npm run typecheck && npm test && npm run build`.
+2. Antes de PR: `npm run lint && npm run typecheck && npm run build && npm test`; si el cambio
+   toca comportamiento en el navegador, también `npm run test:e2e` y
+   `npm run test:e2e:firefox` (ver docs/limitations.md para sus requisitos).
 3. Las fases se implementan incrementales — no mandar todo en un solo cambio.
 
 ## Estilo y reglas del proyecto
@@ -22,6 +24,13 @@ cargar la extensión en modo desarrollador.
 - Sin telemetría ni código remoto ejecutable.
 - No afirmar compatibilidad Chrome/Firefox sin probarlo o verificarlo contra
   documentación vigente.
+
+## Idiomas
+
+Los textos viven en `_locales/<código>/messages.json`. Para agregar un idioma:
+crear la carpeta con todas las claves de `en` y sumarlo a `src/core/languages.ts`
+(un test verifica que no falten claves ni queden placeholders sin definir).
+Los iconos se regeneran con `npm run icons` (requiere ImageMagick).
 
 ## Reportar bugs
 

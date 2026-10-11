@@ -5,6 +5,21 @@ proyecto usa versionado semántico.
 
 ## [Unreleased]
 
+### Added
+
+- Controles por sitio en el popup: no bloquear, no descartar, o pausar el bloqueo por 15 min, 1 h o 4 h.
+- Botón "Descartar pestañas inactivas ahora" y contador de pestañas descartadas.
+- Lista ampliada opcional de rastreadores y anuncios (activa en el perfil Privacidad).
+- Bloqueo opcional por tipo de recurso (scripts, imágenes, etc.).
+- Exportar a archivo e importar desde archivo.
+- Avisos de líneas inválidas y del límite de dominios al escribir.
+- Aviso de cambios sin guardar con opción de descartarlos.
+- Reintentar desde la interfaz cuando falla la aplicación de reglas.
+- Idiomas francés y alemán, y selector manual de idioma.
+- Modo oscuro y mejoras de accesibilidad (lectores de pantalla y teclado).
+- Íconos definitivos.
+- Pruebas automáticas en navegadores reales (Chromium y Firefox).
+
 ## [0.1.0] - 2026-10-11
 
 Primera versión de desarrollo.

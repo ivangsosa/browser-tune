@@ -14,6 +14,6 @@ export default tseslint.config(
     languageOptions: { globals: { ...globals.node } }
   },
   {
-    ignores: ["dist", "node_modules", "web-ext-artifacts"]
+    ignores: ["dist", "node_modules", "web-ext-artifacts", "test-results", "playwright-report"]
   }
 );

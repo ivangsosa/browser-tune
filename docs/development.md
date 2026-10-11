@@ -14,7 +14,11 @@ npm run build:chrome # solo Chrome
 npm run build:firefox# solo Firefox
 npm run lint         # eslint
 npm run typecheck    # tsc --noEmit
-npm test             # vitest
+npm test             # vitest (unit + verificación de dist/)
+npm run test:e2e     # Chromium real con la extensión (requiere `npx playwright install chromium`)
+npm run test:e2e:firefox  # Firefox real vía geckodriver (requiere firefox + geckodriver)
+SCREENSHOTS=1 npm run test:e2e   # además regenera store-assets/*.png
+npm run icons        # regenera los iconos (requiere ImageMagick)
 npm run webext:lint  # valida el paquete de Firefox (addons-linter)
 npm run webext:run   # abre Firefox temporal con la extensión (usa npx web-ext, opcional)
 ```

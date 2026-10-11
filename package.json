@@ -13,10 +13,14 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "webext:lint": "addons-linter dist/firefox --self-hosted",
-    "webext:run": "npx web-ext run --source-dir dist/firefox"
+    "webext:run": "npx web-ext run --source-dir dist/firefox",
+    "test:e2e": "npm run build:chrome && playwright test",
+    "icons": "bash scripts/make-icons.sh",
+    "test:e2e:firefox": "npm run build:firefox && node tests/e2e/firefox-smoke.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "1.63.0",
     "@types/chrome": "^0.3.5",
     "@types/node": "^26.6.5",
     "addons-linter": "^10.14.0",

@@ -1,0 +1,18 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    # No adoptar versiones recién publicadas: esperar a que la comunidad las revise.
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 5
+    target-branch: develop
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    target-branch: develop
