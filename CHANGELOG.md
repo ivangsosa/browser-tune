@@ -5,6 +5,8 @@ proyecto usa versionado semántico.
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-10-11
+
 ### Added
 
 - Atajo de teclado para descartar pestañas inactivas (Alt+Shift+D, personalizable).
