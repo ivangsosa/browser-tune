@@ -21,7 +21,7 @@ jobs:
       - run: npm run build
       - run: npm test
       - run: npm run webext:lint
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         with:
           name: browser-tune-dist
           path: dist/
